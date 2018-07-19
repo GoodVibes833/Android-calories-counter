@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "454421032578",
+    "firebase_url": "https://androidcalorycal.firebaseio.com",
+    "project_id": "androidcalorycal",
+    "storage_bucket": "androidcalorycal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:454421032578:android:2072047eb4c41f42",
+        "android_client_info": {
+          "package_name": "ciccc.ca.android_calory_cal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "454421032578-e6icbqch7m65gmrako2f08i98s2fp9gq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ciccc.ca.android_calory_cal",
+            "certificate_hash": "1d5b3058f417162ebb221134ed705c22a20b363a"
+          }
+        },
+        {
+          "client_id": "454421032578-cfiiv5ht887un4mjf522gb4oja5jetkg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_sxE3utqsaPxfnYuB3GiIvQnKbQ1GH5Y"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "454421032578-cfiiv5ht887un4mjf522gb4oja5jetkg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

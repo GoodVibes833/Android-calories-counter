@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GetStart"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calorie Calculator"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter the weight you hope"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/targetWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kg"/>
+
+</LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter the current weight"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <EditText
+        android:id="@+id/currentWeight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Kg"/>
+
+</LinearLayout>
+
+    <Button
+        android:id="@+id/calculateDayCal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="calculateDayCal"
+        android:text="Calculate day calories"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You can get (hope)"/>
+
+    <TextView
+        android:id="@+id/calorieTarget"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="---------"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cal today"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You can get(current)"/>
+
+    <TextView
+        android:id="@+id/calorieCurrent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="---------"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cal today"/>
+
+    <Button
+        android:id="@+id/getStarted"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="getStarted"
+        android:text="Get Started"/>
+
+
+
+</LinearLayout>
