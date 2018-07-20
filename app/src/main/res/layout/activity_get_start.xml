@@ -8,102 +8,154 @@
     tools:context=".GetStart"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Calorie Calculator"/>
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="@dimen/wrapPad">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Calorie Calculator"
+            android:textSize="@dimen/largeText"
+            android:textColor="@color/colorPrimary"/>
 
-    <TextView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:text="Enter the weight you hope"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/targetWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/largeText"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/regularText"
+                android:textColor="@color/colorPrimary"
+                android:text="Kg"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:text="Enter the current weight"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/currentWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/largeText"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/regularText"
+                android:textColor="@color/colorPrimary"
+                android:text="Kg"/>
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/calculateDayCal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryOff"
+            android:onClick="calculateDayCal"
+            android:text="Calculate calories in a day"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:text="You now get"/>
+
+        <TextView
+            android:id="@+id/calorieCurrent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/extralargeText"
+            android:textColor="@color/colorPrimary"
+            android:text="---------"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:text="kcal in a day"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:text="To lose / gain your weight..."/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:text="You can get"/>
+
+        <TextView
+            android:id="@+id/calorieTarget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/extralargeText"
+            android:textColor="@color/colorPrimary"
+            android:text="---------"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:text="kcal today"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Enter the weight you hope"/>
+        android:orientation="vertical">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/getStarted"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/largeText"
+            android:background="@color/colorPrimary"
+            android:textColor="@color/colorPrimaryOff"
+            android:onClick="getStarted"
+            android:text="Get Started"/>
 
-    <EditText
-        android:id="@+id/targetWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kg"/>
-
-</LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Enter the current weight"/>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <EditText
-        android:id="@+id/currentWeight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Kg"/>
-
-</LinearLayout>
-
-    <Button
-        android:id="@+id/calculateDayCal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="calculateDayCal"
-        android:text="Calculate day calories"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="You can get (hope)"/>
-
-    <TextView
-        android:id="@+id/calorieTarget"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="---------"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="cal today"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="You can get(current)"/>
-
-    <TextView
-        android:id="@+id/calorieCurrent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="---------"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="cal today"/>
-
-    <Button
-        android:id="@+id/getStarted"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="getStarted"
-        android:text="Get Started"/>
-
-
+    </LinearLayout>
 
 </LinearLayout>

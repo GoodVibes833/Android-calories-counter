@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- textSize -->
+    <dimen name="smallText"></dimen>
+    <dimen name="regularText">18sp</dimen>
+    <dimen name="largeText">30sp</dimen>
+    <dimen name="extralargeText">50sp</dimen>
+    <!-- spaceSize -->
+    <dimen name="wrapPad">40dp</dimen>
+</resources>
