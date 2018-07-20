@@ -3,27 +3,30 @@ package ciccc.ca.android_calory_cal;
 import java.util.Date;
 
 public class History {
-    String today;
-    String item;
-    String totalCalories;
+    private String date;
+    private String item;
+    private String totalCalories;
 
-    public History(String today, String item, String totalCalories) {
-        this.today = today;
+    public History() {
+    }
+
+    public History(String date, String item, String totalCalories) {
+        this.date = date;
         this.item = item;
         this.totalCalories = totalCalories;
     }
 
     @Override
     public String toString() {
-        return today + " -> " + item + "," + totalCalories + "calories";
+        return date + " -> " + item + "," + totalCalories + "calories";
     }
 
-    public String getToday() {
-        return today;
+    public String getDate() {
+        return date;
     }
 
-    public void setToday(String today) {
-        this.today = today;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getItem() {

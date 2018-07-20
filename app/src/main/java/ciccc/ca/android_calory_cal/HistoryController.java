@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,7 +22,7 @@ import java.util.Date;
 public class HistoryController extends AppCompatActivity {
     ListView historyListView;
     ArrayAdapter<History> adapter;
-    private ArrayList<History> historyArrayList = new ArrayList<>();
+    private ArrayList<History> historyArrayList;
     Intent intent;
     private DatabaseReference ref_history;
 
@@ -35,6 +36,7 @@ public class HistoryController extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+        historyArrayList = new ArrayList<>();
 
         //DB
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -42,59 +44,63 @@ public class HistoryController extends AppCompatActivity {
 
         //VIEW
         historyListView = findViewById(R.id.historyListView);
-        String date = today.getYear()+1900 + "-" + (1+today.getMonth()) + "-" + today.getDate();
-
+        final String date = today.getYear()+1900 + "-" + (1+today.getMonth()) + "-" + today.getDate();
         intent = getIntent();
 
 
 
 //        if(!TextUtils.isEmpty(artist_name)) {
 //
-            // 1. generate unique id key.
+
+        // wrire to the DB
             String totalCalories = intent.getStringExtra("totalCalories");
             String item = intent.getStringExtra("food");
             String id = ref_history.push().getKey();
 
+
+            //set data
             History history = new History(date, item, totalCalories);
-
-
-            ref_history.child(date).child("EAT" + id).setValue(history);
-
-
-
+            ref_history.child(date).child(id).setValue(history);
 
 
         // Read from the database
         ref_history.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                // This method is called once with the initial value and again
-                // whenever data at this location is updated.
-//                History history1 = dataSnapshot.getValue(History.class);
-//                String string = dataSnapshot.getValue(String.class);
-//                historyArrayList.add(history1);
-//                System.out.println("reading : " + string);
-//            adapter.notifyDataSetChanged();
+
+                historyArrayList.clear();
+
+                for(DataSnapshot historySnapShot: dataSnapshot.child(date).getChildren()) {
+                    History history = historySnapShot.getValue(History.class);
+                    historyArrayList.add(history);
+
+                }
+//                    adapter.notifyDataSetChanged();
+                adapter = new ArrayAdapter<>(HistoryController.this, android.R.layout.simple_list_item_1,historyArrayList);
+                historyListView.setAdapter(adapter);
+
+
+
 //                Log.d(TAG, "Value is: " + history1);
             }
 
             @Override
             public void onCancelled(DatabaseError error) {
                 // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
+                if(error != null) {
+                    Toast.makeText(HistoryController.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                }
             }
         });
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,historyArrayList);
-        historyListView.setAdapter(adapter);
-
-//        }else{
-//            Toast.makeText(this,"Please enter Artist name",Toast.LENGTH_LONG).show();
-//        }
 
 
 
 
     }
+
+
+
+
 
 
     public void goToRecord(View view) {
