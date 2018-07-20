@@ -9,15 +9,19 @@
 
 
     <Button
+        android:id="@+id/choosedate"
+        android:onClick="chooseDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Choose Date"/>
 
+
     <TextView
-        android:layout_width="match_parent"
+        android:id="@+id/selectedDate"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="date"/>
+        android:textSize="20sp"/>
+
 
     <ListView
         android:id="@+id/historyListView"
