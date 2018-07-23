@@ -76,9 +76,7 @@ public class HistoryController extends AppCompatActivity {
            ref_history.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
                 historyArrayList.clear();
-
                 for(DataSnapshot historySnapShot: dataSnapshot.child(date).getChildren()) {
                     History history = historySnapShot.getValue(History.class);
                     historyArrayList.add(history);
@@ -100,7 +98,6 @@ public class HistoryController extends AppCompatActivity {
 
 
     }
-
 
 
     public void goToRecord(View view) {
@@ -142,15 +139,40 @@ public class HistoryController extends AppCompatActivity {
             @Override
             public void onDayClick(EventDay eventDay) {
 
+
+
                 Calendar clickedDayCalendar = eventDay.getCalendar();
                 TextView textView= findViewById(R.id.selectedDate);
-                textView.setText(String.valueOf(clickedDayCalendar.get(Calendar.YEAR))
-                            +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.MONTH)+1)
-                            +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.DATE)));
-
-
+                final String selectedDate = String.valueOf(clickedDayCalendar.get(Calendar.YEAR))
+                        +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.MONTH)+1)
+                        +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.DATE));
+                textView.setText(selectedDate);
 
                 alertDialog.dismiss();
+
+                // Read from the database
+                ref_history.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        historyArrayList.clear();
+                        for(DataSnapshot historySnapShot: dataSnapshot.child(selectedDate).getChildren()) {
+                            History history = historySnapShot.getValue(History.class);
+                            historyArrayList.add(history);
+
+                        }
+                        adapter = new ArrayAdapter<>(HistoryController.this, android.R.layout.simple_list_item_1,historyArrayList);
+                        historyListView.setAdapter(adapter);
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error) {
+                        // Failed to read value
+                        if(error != null) {
+                            Toast.makeText(HistoryController.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
 
 
             }

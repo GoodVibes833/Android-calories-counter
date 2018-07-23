@@ -17,17 +17,17 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class EatActivity extends AppCompatActivity {
+public class MoveActivity extends AppCompatActivity {
     SearchView searchView;
     ListView listView;
-    ArrayAdapter<Eat> adapter;
-    ArrayAdapter<Eat> adapter2;
+    ArrayAdapter<Move> adapter;
+    ArrayAdapter<Move> adapter2;
     TextView eat_item;
-    private InputStream inputStream;
-    private BufferedReader bufferedReader;
-    private ArrayList<String> foodArray;
-    ArrayList<Eat> list;
-    ArrayList<Eat> list2;
+    InputStream inputStream;
+    BufferedReader bufferedReader;
+    ArrayList<String> MoveArray;
+    ArrayList<Move> list;
+    ArrayList<Move> list2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class EatActivity extends AppCompatActivity {
         // 1. read text file
         inputStream = getResources().openRawResource(R.raw.food_calories);
         bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        foodArray = new ArrayList<>();
+        MoveArray = new ArrayList<>();
         list = new ArrayList<>();
         list2 = new ArrayList<>();
 
@@ -51,12 +51,12 @@ public class EatActivity extends AppCompatActivity {
                 line = (bufferedReader.readLine());
                 if (line == null)
                     break;
-                foodArray.add(line);
+                MoveArray.add(line);
 
             }
-            for (int i = 1; i < foodArray.size()/4; i++) {
-                list.add(new Eat(foodArray.get(4*i), foodArray.get(2+4*i)));
-                list2.add(new Eat(foodArray.get(4*i), foodArray.get(2+4*i)));
+            for (int i = 1; i < MoveArray.size()/4; i++) {
+                list.add(new Move(MoveArray.get(4*i), MoveArray.get(2+4*i)));
+                list2.add(new Move(MoveArray.get(4*i), MoveArray.get(2+4*i)));
             }
 
             bufferedReader.close();
@@ -78,17 +78,17 @@ public class EatActivity extends AppCompatActivity {
                     adapter.getFilter().filter(query);
 
                 }else{
-                    Toast.makeText(EatActivity.this, "No Match found",Toast.LENGTH_LONG).show();
+                    Toast.makeText(MoveActivity.this, "No Match found",Toast.LENGTH_LONG).show();
                 }
                 return false;
             }
 
-        @Override
-        public boolean onQueryTextChange(String newText) {
+            @Override
+            public boolean onQueryTextChange(String newText) {
                 adapter.getFilter().filter(newText);
-            return false;
-        }
-    });
+                return false;
+            }
+        });
 
 
         //short click
@@ -100,9 +100,9 @@ public class EatActivity extends AppCompatActivity {
                 // after filter - refresh list or create another list with searched items.
                 System.out.println("position : " + position);
                 System.out.println("id : " + id);
-                Eat eat = list.get(position);
+                Move eat = list.get(position);
 
-                intent.putExtra("food", eat.getFood());
+                intent.putExtra("food", eat.getExercises());
                 intent.putExtra("calories", eat.getCalories());
                 startActivity(intent);
 
@@ -111,7 +111,4 @@ public class EatActivity extends AppCompatActivity {
         });
 
         // tyep eat_gram -> calculate calories
-
-
-}
-}
+}}

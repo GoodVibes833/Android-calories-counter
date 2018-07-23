@@ -8,20 +8,19 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.TextView;
 
-public class CalculateCalories extends AppCompatActivity {
+public class CalculateEatCalories extends AppCompatActivity {
     TextView clickedItem;
     TextView gram;
     TextView tatalcalories;
     Intent intent;
     String clickedItemCalories;
-
     String clickedItemfood;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculate_calories);
+        setContentView(R.layout.activity_calculate_eat_calories);
 
         gram = findViewById(R.id.gram);
         tatalcalories = findViewById(R.id.tatalcalories);

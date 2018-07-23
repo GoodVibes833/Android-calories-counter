@@ -5,10 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CalculateCalories"
+    tools:context=".CalculateMoveCalories"
     android:orientation="vertical">
-
-
 
     <TextView
         android:id="@+id/clickedItem"
@@ -23,11 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/gram"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:inputType="number" />
+    <EditText
+        android:id="@+id/gram"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:inputType="number" />
 
     <TextView
         android:textSize="30dp"
@@ -42,6 +40,11 @@
         android:textSize="30sp"
         android:text="calories"/>
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="calculate"
+        android:onClick="calculateTotal"/>
 
     <Button
         android:layout_width="wrap_content"
