@@ -3,4 +3,9 @@
     <color name="colorPrimary">#46A55F</color>
     <color name="colorPrimaryOff">#FFF</color>
     <color name="colorAccent">#FF4081</color>
+<<<<<<< HEAD
 </resources>
+=======
+    <color name="green">#3A974D</color>
+</resources>
+>>>>>>> 8d8228491b263e609c401b690f13c42f63d5f2a5

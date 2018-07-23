@@ -1,15 +1,25 @@
 package ciccc.ca.android_calory_cal;
 
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.applandeo.materialcalendarview.CalendarView;
+import com.applandeo.materialcalendarview.DatePicker;
+import com.applandeo.materialcalendarview.EventDay;
+import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
+import com.applandeo.materialcalendarview.exceptions.OutOfDateRangeException;
+import com.applandeo.materialcalendarview.listeners.OnDayClickListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,7 +27,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 public class HistoryController extends AppCompatActivity {
     ListView historyListView;
@@ -27,7 +39,7 @@ public class HistoryController extends AppCompatActivity {
     private DatabaseReference ref_history;
 
     Date today = new Date();
-    private String TAG= "HistoryController";
+    private String TAG = "HistoryController";
 
 
     // I need DB to store history
@@ -49,9 +61,6 @@ public class HistoryController extends AppCompatActivity {
 
 
 
-//        if(!TextUtils.isEmpty(artist_name)) {
-//
-
         // wrire to the DB
             String totalCalories = intent.getStringExtra("totalCalories");
             String item = intent.getStringExtra("food");
@@ -64,7 +73,7 @@ public class HistoryController extends AppCompatActivity {
 
 
         // Read from the database
-        ref_history.addValueEventListener(new ValueEventListener() {
+           ref_history.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -75,13 +84,9 @@ public class HistoryController extends AppCompatActivity {
                     historyArrayList.add(history);
 
                 }
-//                    adapter.notifyDataSetChanged();
                 adapter = new ArrayAdapter<>(HistoryController.this, android.R.layout.simple_list_item_1,historyArrayList);
                 historyListView.setAdapter(adapter);
 
-
-
-//                Log.d(TAG, "Value is: " + history1);
             }
 
             @Override
@@ -94,17 +99,69 @@ public class HistoryController extends AppCompatActivity {
         });
 
 
-
-
     }
-
-
-
 
 
 
     public void goToRecord(View view) {
         intent = new Intent(this, EatActivity.class);
         startActivity(intent);
+    }
+
+
+//      https://github.com/Applandeo/Material-Calendar-View
+//      https://github.com/snollidea/peppy-calendarview
+    public void chooseDate(View view) throws OutOfDateRangeException {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.activity_history_calendar,null);
+        builder.setView(dialogView);
+
+        //adding images
+        List<EventDay> events = new ArrayList<>();
+        Calendar calendar = Calendar.getInstance();
+        events.add(new EventDay(calendar, R.drawable.popup_green));
+
+
+        final CalendarView calendarView = dialogView.findViewById(R.id.calendarView);
+        calendarView.setEvents(events);
+
+        //setting current date
+        calendar.set(2018, 6, 20);
+        calendarView.setDate(calendar);
+
+         final AlertDialog alertDialog = builder.create();
+        alertDialog.show();
+
+
+
+
+
+        calendarView.setOnDayClickListener(new OnDayClickListener() {
+            @Override
+            public void onDayClick(EventDay eventDay) {
+
+                Calendar clickedDayCalendar = eventDay.getCalendar();
+                TextView textView= findViewById(R.id.selectedDate);
+                textView.setText(String.valueOf(clickedDayCalendar.get(Calendar.YEAR))
+                            +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.MONTH)+1)
+                            +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.DATE)));
+
+
+
+                alertDialog.dismiss();
+
+
+            }
+        });
+
+
+
+
+
+
+
+
     }
 }

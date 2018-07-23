@@ -19,6 +19,7 @@ android {
 }
 
 dependencies {
+    implementation 'com.applandeo:material-calendar-view:1.4.0'
     implementation 'im.dacer:AndroidCharts:1.0.4'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:27.1.1'

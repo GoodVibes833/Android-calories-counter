@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.applandeo.materialcalendarview.CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        />
+
+
+    <!--Colors customization:-->
+
+    <!--Header color: app:headerColor="[color]"-->
+    <!--Header label color: app:headerLabelColor="[color]"-->
+    <!--Previous button image resource: app:previousButtonSrc="[drawable]"-->
+    <!--Forward button image resource: app:forwardButtonSrc="[drawable]"-->
+    <!--Abbreviations bar color: app:abbreviationsBarColor="[color]"-->
+    <!--Abbreviations labels color: app:abbreviationsLabelsColor="[color]"-->
+    <!--Calendar pages color: app:pagesColor="[color]"-->
+    <!--Selection color in picker mode: app:selectionColor="[color]"-->
+    <!--Selection label color in picker mode: app:selectionLabelColor="[color]"-->
+    <!--Days labels color: app:daysLabelsColor="[color]"-->
+    <!--Color of visible days labels from previous and next month page: app:anotherMonthsDaysLabelsColor="[color]"-->
+    <!--Disabled days labels color: app:disabledDaysLabelsColor="[color]"-->
+    <!--Today label color: app:todayLabelColor="[color]"-->
+
+
+
+</android.support.constraint.ConstraintLayout>
