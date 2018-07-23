@@ -42,8 +42,10 @@ public class CalculateMoveCalories extends AppCompatActivity {
 
         intent = getIntent();
         clickedItemCalories = intent.getStringExtra("calories");
-        clickedItemExercise = intent.getStringExtra("food");
+        clickedItemExercise = intent.getStringExtra("exercise");
         clickedItem.setText("("+ clickedItemExercise + ")"+ clickedItemCalories);
+        System.out.println("ex : " + clickedItemExercise);
+        System.out.println("cal : " + clickedItemCalories);
     }
 
 
@@ -57,7 +59,7 @@ public class CalculateMoveCalories extends AppCompatActivity {
         Intent intent = new Intent(this, HistoryController.class);
         String total = String.valueOf(Integer.valueOf(String.valueOf(gram.getText())) * Integer.valueOf(clickedItemCalories));
         intent.putExtra("totalCalories", total);
-        intent.putExtra("food", clickedItemExercise);
+        intent.putExtra("exercise", clickedItemExercise);
         startActivity(intent);
 
     }
