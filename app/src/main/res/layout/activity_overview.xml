@@ -7,6 +7,16 @@
     tools:context=".OverviewActivity"
     android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/regularPad"
+        android:background="@color/colorPrimary"
+        android:text="Overview"
+        android:textColor="@color/colorPrimaryOff"
+        android:textSize="@dimen/largeText"
+        android:gravity="center" />
+
     <view
         android:layout_width="300dp"
         android:layout_height="wrap_content"
