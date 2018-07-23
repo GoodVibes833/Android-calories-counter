@@ -14,6 +14,7 @@ public class CalculateCalories extends AppCompatActivity {
     TextView tatalcalories;
     Intent intent;
     String clickedItemCalories;
+
     String clickedItemfood;
 
 
