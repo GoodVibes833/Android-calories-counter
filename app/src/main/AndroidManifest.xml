@@ -9,7 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".EatActivity"></activity>
+        <activity android:name=".EatActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".GetStart" />
         <activity android:name=".CalculateEatCalories" />
         <activity android:name=".HistoryController"></activity>
@@ -19,11 +25,7 @@
         </activity>
         <activity android:name=".CalculateMoveCalories"></activity>
         <activity android:name=".InputEat">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

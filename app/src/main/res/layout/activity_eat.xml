@@ -73,56 +73,46 @@
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
+            android:layout_height="30dp">
         </SearchView>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/eat_item"
-        android:textSize="@dimen/regularText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/calories"
-        android:textSize="@dimen/regularText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp">
     </ListView>
 
-    <GridLayout
+    <LinearLayout
+        android:layout_weight="1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:columnCount="3">
+        android:layout_gravity="bottom"
+        android:gravity="bottom">
 
-        <ImageButton
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/regularPad"
-            android:background="@color/colorPrimaryOff"
-            android:src="@drawable/ico_overview"/>
+            <ImageButton
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/regularPad"
+                android:background="@color/colorPrimaryOff"
+                android:src="@drawable/ico_overview"/>
 
-        <ImageButton
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/regularPad"
-            android:background="@color/colorPrimary"
-            android:src="@drawable/ico_record_wh"/>
+            <ImageButton
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/regularPad"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/ico_record_wh"/>
 
-        <ImageButton
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/regularPad"
-            android:background="@color/colorPrimaryOff"
-            android:src="@drawable/ico_history"/>
+            <ImageButton
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/regularPad"
+                android:background="@color/colorPrimaryOff"
+                android:src="@drawable/ico_history"/>
 
-    </GridLayout>
+    </LinearLayout>
 
 </LinearLayout>
