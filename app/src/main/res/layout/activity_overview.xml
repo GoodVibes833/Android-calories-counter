@@ -14,86 +14,89 @@
         android:id="@+id/pie_view" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-    <TextView
-        android:text="@string/you_got"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"/>
+        android:gravity="center">
 
-    <TextView
-        android:id="@+id/gotCalories"
-        android:text="xxx"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:text="@string/you_got"
+            android:textSize="@dimen/regularText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"/>
 
-    <TextView
-        android:text=" cal"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/gotCalories"
+            android:text="xxx"
+            android:textSize="@dimen/extralargeText"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="kcal"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
-    <TextView
-        android:text="You lost "
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:text="You lost"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/lostCalories"
-        android:text="xxx"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/lostCalories"
+            android:text="xxx"
+            android:textSize="@dimen/extralargeText"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:text=" cal"
-        android:textSize="30sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:text="kcal"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ico_overview"/>
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3">
 
         <ImageButton
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/ico_overview_wh"/>
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:background="@color/colorPrimaryOff"
             android:src="@drawable/ico_record"/>
 
         <ImageButton
-            android:layout_width="wrap_content"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:background="@color/colorPrimaryOff"
             android:src="@drawable/ico_history"/>
 
-        <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ico_history"/>
-        
-        <ImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ico_history"/>
-
-    </LinearLayout>
+    </GridLayout>
 
 </LinearLayout>
