@@ -49,10 +49,4 @@
         android:text="calculate"
         android:onClick="calculateTotal"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="addToList"
-        android:onClick="addToHistory"/>
-
 </LinearLayout>
