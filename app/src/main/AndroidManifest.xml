@@ -11,8 +11,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".EatActivity">
 
-<<<<<<< HEAD
-=======
         </activity>
         <activity android:name=".GetStart" />
         <activity android:name=".CalculateCalories" />
@@ -21,7 +19,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
->>>>>>> 8d8228491b263e609c401b690f13c42f63d5f2a5
         </activity>
         <activity android:name=".OverviewActivity">
             <intent-filter>
