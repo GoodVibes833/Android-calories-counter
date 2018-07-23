@@ -74,6 +74,16 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ico_overview"/>
 
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_record"/>
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ico_history"/>
+
     </LinearLayout>
 
 </LinearLayout>
