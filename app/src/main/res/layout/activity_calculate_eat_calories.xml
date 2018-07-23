@@ -52,7 +52,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="calculate"
-        android:onClick="calculateTotal"/>
+        android:text="add to histry"
+        android:onClick="addToHistory"/>
 
 </LinearLayout>

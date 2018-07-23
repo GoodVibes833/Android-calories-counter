@@ -27,7 +27,6 @@ public class MoveActivity extends AppCompatActivity {
     BufferedReader bufferedReader;
     ArrayList<String> MoveArray;
     ArrayList<Move> list;
-    ArrayList<Move> list2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,11 +38,10 @@ public class MoveActivity extends AppCompatActivity {
 
 
         // 1. read text file
-        inputStream = getResources().openRawResource(R.raw.food_calories);
+        inputStream = getResources().openRawResource(R.raw.exercise_calories);
         bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         MoveArray = new ArrayList<>();
         list = new ArrayList<>();
-        list2 = new ArrayList<>();
 
         try {
             String line;
@@ -54,9 +52,9 @@ public class MoveActivity extends AppCompatActivity {
                 MoveArray.add(line);
 
             }
-            for (int i = 1; i < MoveArray.size()/4; i++) {
-                list.add(new Move(MoveArray.get(4*i), MoveArray.get(2+4*i)));
-                list2.add(new Move(MoveArray.get(4*i), MoveArray.get(2+4*i)));
+            for (int i = 1; i < MoveArray.size()/5-2; i++) {
+                // 6 7    11 12   16 17
+                list.add(new Move(MoveArray.get(5*i), MoveArray.get(5*i+1)));
             }
 
             bufferedReader.close();
@@ -68,7 +66,6 @@ public class MoveActivity extends AppCompatActivity {
 
         // listView
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list);
-        adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list2);
         listView.setAdapter(adapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -92,7 +89,7 @@ public class MoveActivity extends AppCompatActivity {
 
 
         //short click
-        final Intent intent = new Intent(this, CalculateEatCalories.class);
+        final Intent intent = new Intent(this, CalculateMoveCalories.class);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -100,10 +97,10 @@ public class MoveActivity extends AppCompatActivity {
                 // after filter - refresh list or create another list with searched items.
                 System.out.println("position : " + position);
                 System.out.println("id : " + id);
-                Move eat = list.get(position);
+                Move move = list.get(position);
 
-                intent.putExtra("food", eat.getExercises());
-                intent.putExtra("calories", eat.getCalories());
+                intent.putExtra("exercise", move.getExercises());
+                intent.putExtra("calories", move.getCalories());
                 startActivity(intent);
 
 

@@ -8,6 +8,11 @@ public class Move {
     public Move() {
     }
 
+    @Override
+    public String toString() {
+        return "exercise : " + exercises + " calories : " + calories;
+    }
+
     public Move(String exercises, String calories) {
         this.exercises = exercises;
         this.calories = calories;

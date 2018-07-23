@@ -60,16 +60,31 @@ public class HistoryController extends AppCompatActivity {
         intent = getIntent();
 
 
-
         // wrire to the DB
+
+        if(intent.getStringExtra("food") != null) {
+            //from food
             String totalCalories = intent.getStringExtra("totalCalories");
             String item = intent.getStringExtra("food");
             String id = ref_history.push().getKey();
 
 
             //set data
-            History history = new History(date, item, totalCalories);
+            History history = new History(date, "EAT : " + item, totalCalories);
             ref_history.child(date).child(id).setValue(history);
+
+        }else {
+            //from exercise
+            String totalCalories = intent.getStringExtra("totalCalories");
+            String item = intent.getStringExtra("exercise");
+            String id = ref_history.push().getKey();
+
+            //set data
+            History history = new History(date, "MOVE : " + item, totalCalories);
+            ref_history.child(date).child(id).setValue(history);
+        }
+
+
 
 
         // Read from the database
