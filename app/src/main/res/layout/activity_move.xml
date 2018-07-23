@@ -24,6 +24,7 @@
         android:padding="@dimen/regularPad">
 
         <Button
+            android:onClick="goToRecordEat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_offbtn"
@@ -55,6 +56,7 @@
             android:textColor="@color/colorPrimaryOff"/>
 
         <Button
+            android:onClick="goToRecordMoveInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
@@ -107,6 +109,7 @@
             android:src="@drawable/ico_record_wh"/>
 
         <ImageButton
+            android:onClick="goToHistory"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"

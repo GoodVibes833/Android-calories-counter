@@ -28,6 +28,9 @@ public class EatActivity extends AppCompatActivity {
     private ArrayList<String> foodArray;
     ArrayList<Eat> list;
     ArrayList<Eat> list2;
+    Intent intent;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +39,7 @@ public class EatActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
+
 
 
         // 1. read text file
@@ -92,7 +96,7 @@ public class EatActivity extends AppCompatActivity {
 
 
         //short click
-        final Intent intent = new Intent(this, CalculateEatCalories.class);
+        intent = new Intent(this, CalculateEatCalories.class);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -114,4 +118,26 @@ public class EatActivity extends AppCompatActivity {
 
 
 }
+    public void goToRecordMove(View view) {
+        intent = new Intent(this, MoveActivity.class);
+        startActivity(intent);
+
+    }
+
+
+    public void goToRecordEatInput(View view) {
+        intent = new Intent(this, InputEat.class);
+        startActivity(intent);
+    }
+
+    public void goToOverview(View view) {
+        intent = new Intent(this, OverviewActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToHistory(View view) {
+        intent = new Intent(this, HistoryController.class);
+        startActivity(intent);
+
+    }
 }

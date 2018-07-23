@@ -94,6 +94,7 @@
             android:src="@drawable/ico_overview_wh"/>
 
         <ImageButton
+            android:onClick="goToRecord"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
@@ -101,6 +102,7 @@
             android:src="@drawable/ico_record"/>
 
         <ImageButton
+            android:onClick="goToHistory"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"

@@ -12,21 +12,17 @@
         <activity android:name=".EatActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".GetStart" />
         <activity android:name=".CalculateEatCalories" />
-        <activity android:name=".HistoryController"></activity>
-        <activity android:name=".OverviewActivity"></activity>
-        <activity android:name=".MoveActivity">
-
-        </activity>
-        <activity android:name=".CalculateMoveCalories"></activity>
-        <activity android:name=".InputEat">
-
-        </activity>
+        <activity android:name=".HistoryController" />
+        <activity android:name=".OverviewActivity" />
+        <activity android:name=".MoveActivity"></activity>
+        <activity android:name=".CalculateMoveCalories" />
+        <activity android:name=".InputEat"></activity>
+        <activity android:name=".InputMove"></activity>
     </application>
 
 </manifest>

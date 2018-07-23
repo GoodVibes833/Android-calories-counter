@@ -27,6 +27,7 @@ public class MoveActivity extends AppCompatActivity {
     BufferedReader bufferedReader;
     ArrayList<String> MoveArray;
     ArrayList<Move> list;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +91,7 @@ public class MoveActivity extends AppCompatActivity {
 
 
         //short click
-        final Intent intent = new Intent(this, CalculateMoveCalories.class);
+        intent = new Intent(this, CalculateMoveCalories.class);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -109,4 +110,20 @@ public class MoveActivity extends AppCompatActivity {
         });
 
         // tyep eat_gram -> calculate calories
-}}
+}
+
+    public void goToRecordMoveInput(View view) {
+        intent = new Intent(this, InputMove.class);
+        startActivity(intent);
+    }
+
+    public void goToRecordEat(View view) {
+        intent = new Intent(this, EatActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToHistory(View view) {
+        intent = new Intent(this, HistoryController.class);
+        startActivity(intent);
+    }
+}
