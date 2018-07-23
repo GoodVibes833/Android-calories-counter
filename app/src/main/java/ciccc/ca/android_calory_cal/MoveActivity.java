@@ -53,7 +53,6 @@ public class MoveActivity extends AppCompatActivity {
 
             }
             for (int i = 1; i < MoveArray.size()/5-2; i++) {
-                // 6 7    11 12   16 17
                 list.add(new Move(MoveArray.get(5*i), MoveArray.get(5*i+1)));
             }
 
@@ -67,6 +66,8 @@ public class MoveActivity extends AppCompatActivity {
         // listView
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list);
         listView.setAdapter(adapter);
+
+        //searchView
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
