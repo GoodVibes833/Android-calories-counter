@@ -99,4 +99,18 @@ public class CalculateEatCalories extends AppCompatActivity {
 
     }
 
+    public void goToHistory(View view) {
+        intent = new Intent(this, HistoryController.class);
+        startActivity(intent);
+    }
+
+    public void goToOverview(View view) {
+        intent = new Intent(this, OverviewActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToRecord(View view) {
+        intent = new Intent(this, EatActivity.class);
+        startActivity(intent);
+    }
 }

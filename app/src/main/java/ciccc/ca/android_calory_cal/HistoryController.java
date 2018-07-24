@@ -40,7 +40,6 @@ public class HistoryController extends AppCompatActivity {
     private DatabaseReference ref_overview;
     Date today = new Date();
     private String TAG = "HistoryController";
-
     static int sumOfCalories;
     static int sumOfMoveCal;
     static int sumOfEatCal;
@@ -163,9 +162,9 @@ public class HistoryController extends AppCompatActivity {
 
     public void goToOverview(View view) {
         intent = new Intent(this, OverviewActivity.class);
-        intent.putExtra("sumOfCalories",String.valueOf(sumOfCalories));
-        intent.putExtra("sumOfMoveCal",String.valueOf(sumOfMoveCal * -1));
-        intent.putExtra("sumOfEatCal",String.valueOf(sumOfEatCal));
+//        intent.putExtra("sumOfCalories",String.valueOf(sumOfCalories));
+//        intent.putExtra("sumOfMoveCal",String.valueOf(sumOfMoveCal * -1));
+//        intent.putExtra("sumOfEatCal",String.valueOf(sumOfEatCal));
 
         startActivity(intent);
     }

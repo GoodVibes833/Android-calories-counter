@@ -112,10 +112,10 @@ public class MoveActivity extends AppCompatActivity {
         // tyep eat_gram -> calculate calories
 }
 
-    public void goToRecordMoveInput(View view) {
-        intent = new Intent(this, InputMove.class);
-        startActivity(intent);
-    }
+//    public void goToRecordMoveInput(View view) {
+//        intent = new Intent(this, InputMove.class);
+//        startActivity(intent);
+//    }
 
     public void goToRecordEat(View view) {
         intent = new Intent(this, EatActivity.class);
@@ -124,6 +124,16 @@ public class MoveActivity extends AppCompatActivity {
 
     public void goToHistory(View view) {
         intent = new Intent(this, HistoryController.class);
+        startActivity(intent);
+    }
+
+    public void goToOverview(View view) {
+        intent = new Intent(this, OverviewActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToRecordMoveInput(View view) {
+        intent = new Intent(this, InputMove.class);
         startActivity(intent);
     }
 }

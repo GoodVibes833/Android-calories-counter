@@ -95,6 +95,7 @@
         android:gravity="bottom">
 
         <ImageButton
+            android:onClick="goToOverview"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.TextView;
@@ -30,8 +31,6 @@ public class EatActivity extends AppCompatActivity {
     ArrayList<Eat> list2;
     Intent intent;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +38,8 @@ public class EatActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
+
+
 
 
 
@@ -115,14 +116,8 @@ public class EatActivity extends AppCompatActivity {
         });
 
         // tyep eat_gram -> calculate calories
-
-
 }
-    public void goToRecordMove(View view) {
-        intent = new Intent(this, MoveActivity.class);
-        startActivity(intent);
 
-    }
 
 
     public void goToRecordEatInput(View view) {
@@ -140,4 +135,11 @@ public class EatActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void goToRecordMove(View view) {
+        intent = new Intent(this, MoveActivity.class);
+        startActivity(intent);
+    }
+
+
 }

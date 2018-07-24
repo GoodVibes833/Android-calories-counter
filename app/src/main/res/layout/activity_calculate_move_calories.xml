@@ -96,6 +96,7 @@
             android:src="@drawable/ico_overview"/>
 
         <ImageButton
+            android:onClick="goToRecord"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
