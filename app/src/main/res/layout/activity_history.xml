@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,33 +8,74 @@
     tools:context=".HistoryController"
     android:orientation="vertical">
 
-
-    <Button
-        android:id="@+id/choosedate"
-        android:onClick="chooseDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Choose Date"/>
-
-
     <TextView
-        android:id="@+id/selectedDate"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="20sp"/>
+        android:padding="@dimen/regularPad"
+        android:background="@color/colorPrimary"
+        android:text="History"
+        android:textColor="@color/colorPrimaryOff"
+        android:textSize="@dimen/largeText"
+        android:gravity="center" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/regularPad">
+
+        <Button
+            android:id="@+id/choosedate"
+            android:onClick="chooseDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="Choose date"
+            android:textColor="@color/colorPrimaryOff"/>
+
+        <TextView
+            android:id="@+id/selectedDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/extralargeText"
+            android:textColor="@color/colorPrimary" />
+
+    </LinearLayout>
 
     <ListView
         android:id="@+id/historyListView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="150dp">
     </ListView>
 
-
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="go to record"
-        android:onClick="goToRecord"/>
+        android:layout_gravity="bottom"
+        android:gravity="bottom">
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:background="@color/colorPrimaryOff"
+            android:src="@drawable/ico_overview"/>
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:onClick="goToRecord"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/ico_record_wh"/>
+
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:background="@color/colorPrimaryOff"
+            android:src="@drawable/ico_history"/>
+
+    </LinearLayout>
 
 </LinearLayout>
