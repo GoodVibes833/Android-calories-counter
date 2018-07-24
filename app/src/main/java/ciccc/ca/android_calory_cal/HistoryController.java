@@ -37,6 +37,7 @@ public class HistoryController extends AppCompatActivity {
     private ArrayList<History> historyArrayList;
     Intent intent;
     private DatabaseReference ref_history;
+    private DatabaseReference ref_overview;
     Date today = new Date();
     private String TAG = "HistoryController";
 
@@ -54,6 +55,7 @@ public class HistoryController extends AppCompatActivity {
 //        //DB
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref_history = database.getReference("history");
+        ref_overview = database.getReference("overview");
 //
 //        //VIEW
         historyListView = findViewById(R.id.historyListView);
@@ -62,15 +64,11 @@ public class HistoryController extends AppCompatActivity {
         // Read from the database
         readFromTheDatabase(date);
 
-
-
-
     }
 
 
     //      https://github.com/Applandeo/Material-Calendar-View
     public void chooseDate(View view) throws OutOfDateRangeException {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_history_calendar,null);
@@ -105,7 +103,6 @@ public class HistoryController extends AppCompatActivity {
 
                 // Read from the database
                 readFromTheDatabase(selectedDate);
-
             }
         });
 
@@ -133,10 +130,9 @@ public class HistoryController extends AppCompatActivity {
                         sumOfEatCal += Integer.valueOf(historyArrayList.get(i).getTotalCalories());
                     }else{
                         sumOfMoveCal += Integer.valueOf(historyArrayList.get(i).getTotalCalories());
-
                     }
-
                 }
+
                 TextView sum = findViewById(R.id.sumOfCalories);
                 sum.setText(String.valueOf(sumOfCalories));
 
@@ -144,7 +140,8 @@ public class HistoryController extends AppCompatActivity {
                 System.out.println(sumOfEatCal);
                 System.out.println(sumOfMoveCal);
 
-
+                Overview overview = new Overview(sumOfMoveCal,sumOfEatCal);
+                ref_overview.setValue(overview);
             }
 
             @Override
@@ -163,12 +160,12 @@ public class HistoryController extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     public void goToOverview(View view) {
         intent = new Intent(this, OverviewActivity.class);
         intent.putExtra("sumOfCalories",String.valueOf(sumOfCalories));
         intent.putExtra("sumOfMoveCal",String.valueOf(sumOfMoveCal * -1));
         intent.putExtra("sumOfEatCal",String.valueOf(sumOfEatCal));
-
 
         startActivity(intent);
     }

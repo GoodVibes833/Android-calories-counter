@@ -27,6 +27,37 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
+            android:text="Select your gender"/>
+
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <RadioButton android:id="@+id/radio_other"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Other"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female"
+                android:onClick="onRadioButtonClicked"/>
+
+            <RadioButton android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male"
+                android:onClick="onRadioButtonClicked"/>
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/regularText"
+            android:textColor="@color/colorPrimary"
             android:text="Enter the weight you hope"/>
 
         <LinearLayout
@@ -85,7 +116,6 @@
             android:textSize="@dimen/regularText"
             android:background="@color/colorPrimary"
             android:textColor="@color/colorPrimaryOff"
-            android:onClick="calculateDayCal"
             android:text="Calculate calories in a day"/>
 
         <TextView

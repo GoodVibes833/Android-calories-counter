@@ -10,6 +10,8 @@ public class History {
     public History() {
     }
 
+
+
     public History(String date, String item, String totalCalories) {
         this.date = date;
         this.item = item;
