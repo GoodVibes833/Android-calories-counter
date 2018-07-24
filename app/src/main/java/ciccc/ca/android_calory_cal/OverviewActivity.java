@@ -26,27 +26,47 @@ public class OverviewActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overview);
-
         PieView pieView = findViewById(R.id.pie_view);
         ArrayList<PieHelper> pieHelperArrayList = new ArrayList<>();
 
-        pieHelperArrayList.add(new PieHelper(50,Color.RED));
-        pieHelperArrayList.add(new PieHelper(50,Color.BLUE));
 
 
-        pieView.setDate(pieHelperArrayList);
+        Intent intent = getIntent();
+        if(intent.getStringExtra("sumOfCalories") != null) {
+            String sumOfCalories = intent.getStringExtra("sumOfCalories");
+            String sumOfMoveCal = intent.getStringExtra("sumOfMoveCal");
+            String sumOfEatCal = intent.getStringExtra("sumOfEatCal");
+
+            System.out.println("sumOfCalories :" + sumOfCalories);
+            System.out.println("sumOfMoveCal :" + sumOfMoveCal);
+            System.out.println("sumOfEatCal :" + sumOfEatCal);
+
+            //to percentage
+            int percentageOfEat = 100 * Integer.valueOf(sumOfEatCal) /
+                    (Integer.valueOf(sumOfEatCal) + Integer.valueOf(sumOfMoveCal));
+            int percentageOfMove = 100 * Integer.valueOf(sumOfMoveCal) /
+                    (Integer.valueOf(sumOfEatCal) + Integer.valueOf(sumOfMoveCal));
+
+            System.out.println(percentageOfEat);
+            System.out.println(percentageOfMove);
+
+            pieHelperArrayList.add(new PieHelper(percentageOfEat, Color.RED));
+            pieHelperArrayList.add(new PieHelper(100 - percentageOfEat, Color.BLUE));
+
+
+            pieView.setDate(pieHelperArrayList);
 //        pieView.selectedPie(2); //optional
 //        pieView.setOnPieClickListener(listener) //optional
-        pieView.showPercentLabel(true); //optional
+            pieView.showPercentLabel(true); //optional
 
 
-        gotCalories = findViewById(R.id.gotCalories);
-        lostCalories = findViewById(R.id.lostCalories);
+            gotCalories = findViewById(R.id.gotCalories);
+            lostCalories = findViewById(R.id.lostCalories);
 
+            gotCalories.setText(sumOfEatCal);
+            lostCalories.setText(sumOfMoveCal);
 
-
-
-
+        }
     }
 
     public void goToRecord(View view) {

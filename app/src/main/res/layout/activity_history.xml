@@ -21,7 +21,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/regularPad">
+        android:padding="@dimen/regularPad"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/choosedate"
@@ -36,7 +37,14 @@
             android:id="@+id/selectedDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/extralargeText"
+            android:textSize="15sp"
+            android:textColor="@color/colorPrimary" />
+
+        <TextView
+            android:id="@+id/sumOfCalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
             android:textColor="@color/colorPrimary" />
 
     </LinearLayout>
@@ -49,12 +57,13 @@
 
     <LinearLayout
         android:layout_weight="1"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="bottom">
 
         <ImageButton
+            android:onClick="goToOverview"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
@@ -70,6 +79,7 @@
             android:src="@drawable/ico_record_wh"/>
 
         <ImageButton
+            android:onClick="goToRecord"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"

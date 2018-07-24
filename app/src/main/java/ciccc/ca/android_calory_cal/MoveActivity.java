@@ -54,7 +54,7 @@ public class MoveActivity extends AppCompatActivity {
 
             }
             for (int i = 1; i < MoveArray.size()/5-2; i++) {
-                list.add(new Move(MoveArray.get(5*i), MoveArray.get(5*i+1)));
+                list.add(new Move(MoveArray.get(5*i), '-' + MoveArray.get(5*i+1)));
             }
 
             bufferedReader.close();

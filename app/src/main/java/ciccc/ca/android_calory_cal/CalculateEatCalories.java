@@ -6,7 +6,15 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class CalculateEatCalories extends AppCompatActivity {
     TextView clickedItem;
@@ -15,6 +23,10 @@ public class CalculateEatCalories extends AppCompatActivity {
     Intent intent;
     String clickedItemCalories;
     String clickedItemfood;
+    private DatabaseReference ref_history;
+    List<History> historyArrayList;
+    ListView historyListView;
+    Date today = new Date();
 
 
     @Override
@@ -54,10 +66,35 @@ public class CalculateEatCalories extends AppCompatActivity {
 
 
     public void addToHistory(View view) {
+        historyArrayList = new ArrayList<>();
+        //DB
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        ref_history = database.getReference("history");
+
+        //VIEW
+        historyListView = findViewById(R.id.historyListView);
+        final String date = today.getYear()+1900 + "-" + (1+today.getMonth()) + "-" + today.getDate();
+
+
+        // wrire to the DB
+
+            //from food
+           intent = getIntent();
+            String totalCalories = intent.getStringExtra("calories");
+            String total = String.valueOf(Integer.valueOf(String.valueOf(gram.getText())) * Integer.valueOf(clickedItemCalories));
+            String eat = intent.getStringExtra("food");
+            String id = ref_history.push().getKey();
+
+
+            //set data
+            History history = new History(date, "EAT : " + eat, total);
+            ref_history.child(date).child(id).setValue(history);
+
+
         Intent intent = new Intent(this, HistoryController.class);
-        String total = String.valueOf(Integer.valueOf(String.valueOf(gram.getText())) * Integer.valueOf(clickedItemCalories));
-        intent.putExtra("totalCalories", total);
-        intent.putExtra("food",clickedItemfood);
+//        String total = String.valueOf(Integer.valueOf(String.valueOf(gram.getText())) * Integer.valueOf(clickedItemCalories));
+//        intent.putExtra("totalCalories", total);
+//        intent.putExtra("food",clickedItemfood);
         startActivity(intent);
 
     }

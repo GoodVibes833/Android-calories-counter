@@ -37,92 +37,38 @@ public class HistoryController extends AppCompatActivity {
     private ArrayList<History> historyArrayList;
     Intent intent;
     private DatabaseReference ref_history;
-
     Date today = new Date();
     private String TAG = "HistoryController";
 
+    static int sumOfCalories;
+    static int sumOfMoveCal;
+    static int sumOfEatCal;
 
-    // I need DB to store history
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
+//
         historyArrayList = new ArrayList<>();
-
-        //DB
+//        //DB
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref_history = database.getReference("history");
-
-        //VIEW
+//
+//        //VIEW
         historyListView = findViewById(R.id.historyListView);
         final String date = today.getYear()+1900 + "-" + (1+today.getMonth()) + "-" + today.getDate();
-        intent = getIntent();
-
-
-        // wrire to the DB
-
-        if(intent.getStringExtra("food") != null) {
-            //from food
-            String totalCalories = intent.getStringExtra("totalCalories");
-            String item = intent.getStringExtra("food");
-            String id = ref_history.push().getKey();
-
-
-            //set data
-            History history = new History(date, "EAT : " + item, totalCalories);
-            ref_history.child(date).child(id).setValue(history);
-
-        }else {
-            //from exercise
-            String totalCalories = intent.getStringExtra("totalCalories");
-            String item = intent.getStringExtra("exercise");
-            String id = ref_history.push().getKey();
-
-            //set data
-            History history = new History(date, "MOVE : " + item, totalCalories);
-            ref_history.child(date).child(id).setValue(history);
-        }
-
-
-
 
         // Read from the database
-           ref_history.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                historyArrayList.clear();
-                for(DataSnapshot historySnapShot: dataSnapshot.child(date).getChildren()) {
-                    History history = historySnapShot.getValue(History.class);
-                    historyArrayList.add(history);
+        readFromTheDatabase(date);
 
-                }
-                adapter = new ArrayAdapter<>(HistoryController.this, android.R.layout.simple_list_item_1,historyArrayList);
-                historyListView.setAdapter(adapter);
 
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                if(error != null) {
-                    Toast.makeText(HistoryController.this,error.getMessage(),Toast.LENGTH_LONG).show();
-                }
-            }
-        });
 
 
     }
 
 
-    public void goToRecord(View view) {
-        intent = new Intent(this, EatActivity.class);
-        startActivity(intent);
-    }
-
-
-//      https://github.com/Applandeo/Material-Calendar-View
-//      https://github.com/snollidea/peppy-calendarview
+    //      https://github.com/Applandeo/Material-Calendar-View
     public void chooseDate(View view) throws OutOfDateRangeException {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -135,7 +81,6 @@ public class HistoryController extends AppCompatActivity {
         Calendar calendar = Calendar.getInstance();
         events.add(new EventDay(calendar, R.drawable.popup_green));
 
-
         final CalendarView calendarView = dialogView.findViewById(R.id.calendarView);
         calendarView.setEvents(events);
 
@@ -146,15 +91,9 @@ public class HistoryController extends AppCompatActivity {
          final AlertDialog alertDialog = builder.create();
         alertDialog.show();
 
-
-
-
-
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
             public void onDayClick(EventDay eventDay) {
-
-
 
                 Calendar clickedDayCalendar = eventDay.getCalendar();
                 TextView textView= findViewById(R.id.selectedDate);
@@ -162,43 +101,75 @@ public class HistoryController extends AppCompatActivity {
                         +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.MONTH)+1)
                         +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.DATE));
                 textView.setText(selectedDate);
-
                 alertDialog.dismiss();
 
                 // Read from the database
-                ref_history.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        historyArrayList.clear();
-                        for(DataSnapshot historySnapShot: dataSnapshot.child(selectedDate).getChildren()) {
-                            History history = historySnapShot.getValue(History.class);
-                            historyArrayList.add(history);
-
-                        }
-                        adapter = new ArrayAdapter<>(HistoryController.this, android.R.layout.simple_list_item_1,historyArrayList);
-                        historyListView.setAdapter(adapter);
-
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError error) {
-                        // Failed to read value
-                        if(error != null) {
-                            Toast.makeText(HistoryController.this,error.getMessage(),Toast.LENGTH_LONG).show();
-                        }
-                    }
-                });
-
+                readFromTheDatabase(selectedDate);
 
             }
         });
 
+    }
+    private void readFromTheDatabase(final String date) {
+        ref_history.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                historyArrayList.clear();
+                for(DataSnapshot historySnapShot: dataSnapshot.child(date).getChildren()) {
+                    History history = historySnapShot.getValue(History.class);
+                    historyArrayList.add(history);
+                }
+                adapter = new ArrayAdapter<>(HistoryController.this, android.R.layout.simple_list_item_1,historyArrayList);
+                historyListView.setAdapter(adapter);
+
+                //find the amount of calories and set text and send to overview
+                 sumOfCalories = 0;
+                 sumOfMoveCal = 0;
+                 sumOfEatCal = 0;
+
+                for (int i =0; i < historyArrayList.size(); i++){
+                    sumOfCalories += Integer.valueOf(historyArrayList.get(i).getTotalCalories());
+                    if(Integer.valueOf(historyArrayList.get(i).getTotalCalories())>0){
+                        sumOfEatCal += Integer.valueOf(historyArrayList.get(i).getTotalCalories());
+                    }else{
+                        sumOfMoveCal += Integer.valueOf(historyArrayList.get(i).getTotalCalories());
+
+                    }
+
+                }
+                TextView sum = findViewById(R.id.sumOfCalories);
+                sum.setText(String.valueOf(sumOfCalories));
+
+                System.out.println(sumOfCalories);
+                System.out.println(sumOfEatCal);
+                System.out.println(sumOfMoveCal);
 
 
+            }
+
+            @Override
+            public void onCancelled(DatabaseError error) {
+                // Failed to read value
+                if(error != null) {
+                    Toast.makeText(HistoryController.this,error.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+    }
 
 
+    public void goToRecord(View view) {
+        intent = new Intent(this, EatActivity.class);
+        startActivity(intent);
+    }
+
+    public void goToOverview(View view) {
+        intent = new Intent(this, OverviewActivity.class);
+        intent.putExtra("sumOfCalories",String.valueOf(sumOfCalories));
+        intent.putExtra("sumOfMoveCal",String.valueOf(sumOfMoveCal * -1));
+        intent.putExtra("sumOfEatCal",String.valueOf(sumOfEatCal));
 
 
-
+        startActivity(intent);
     }
 }
