@@ -75,16 +75,16 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
             android:onClick="goToRecord"
-            android:background="@color/colorPrimary"
-            android:src="@drawable/ico_record_wh"/>
+            android:background="@color/colorPrimaryOff"
+            android:src="@drawable/ico_record"/>
 
         <ImageButton
             android:onClick="goToRecord"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
-            android:background="@color/colorPrimaryOff"
-            android:src="@drawable/ico_history"/>
+            android:background="@color/colorPrimary"
+            android:src="@drawable/ico_history_wh"/>
 
     </LinearLayout>
 

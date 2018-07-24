@@ -8,20 +8,33 @@
     tools:context=".CalculateEatCalories"
     android:orientation="vertical">
 
-
-
     <TextView
-        android:id="@+id/clickedItem"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="item"/>
+        android:padding="@dimen/regularPad"
+        android:background="@color/colorPrimary"
+        android:text="Record"
+        android:textColor="@color/colorPrimaryOff"
+        android:textSize="@dimen/largeText"
+        android:gravity="center" />
 
-    <TextView
-        android:textSize="30dp"
-        android:text="X"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/wrapPad">
+
+        <TextView
+            android:id="@+id/clickedItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/largeText"
+            android:text="item"/>
+
+        <TextView
+            android:textSize="@dimen/regularText"
+            android:text="×"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <EditText
             android:id="@+id/gram"
@@ -29,30 +42,75 @@
             android:layout_height="wrap_content"
             android:inputType="number" />
 
-    <TextView
-        android:textSize="30dp"
-        android:text="="
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:textSize="@dimen/regularText"
+            android:text="="
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:id="@+id/tatalcalories"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/tatalcalories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/largeText"
+            android:text="calories"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:text="calories"/>
+        android:orientation="vertical"
+        android:padding="@dimen/wrapPad">
 
-    <Button
-        android:layout_width="wrap_content"
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="calculate"
+            android:textColor="@color/colorPrimaryOff"
+            android:onClick="calculateTotal"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="add to histry"
+            android:textColor="@color/colorPrimaryOff"
+            android:onClick="addToHistory"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_weight="1"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="calculate"
-        android:onClick="calculateTotal"/>
+        android:layout_gravity="bottom"
+        android:gravity="bottom">
 
+        <ImageButton
+            android:onClick="goToOverview"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:background="@color/colorPrimaryOff"
+            android:src="@drawable/ico_overview"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="add to histry"
-        android:onClick="addToHistory"/>
+        <ImageButton
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:background="@color/colorPrimary"
+            android:src="@drawable/ico_record_wh"/>
+
+        <ImageButton
+            android:onClick="goToHistory"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
+            android:background="@color/colorPrimaryOff"
+            android:src="@drawable/ico_history"/>
+
+    </LinearLayout>
 
 </LinearLayout>
