@@ -16,6 +16,7 @@
         android:text="@string/history"
         android:textColor="@color/colorPrimaryOff"
         android:textSize="@dimen/largeText"
+        android:textStyle="bold"
         android:gravity="center" />
 
     <LinearLayout
@@ -31,13 +32,17 @@
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
             android:text="@string/choose_date"
-            android:textColor="@color/colorPrimaryOff"/>
+            android:textColor="@color/colorPrimaryOff"
+            android:textAllCaps="false" />
 
         <TextView
             android:id="@+id/selectedDate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="15sp"
+            android:paddingTop="20dp"
+            android:gravity="center"
+            android:textSize="40sp"
+            android:textStyle="bold"
             android:textColor="@color/colorPrimary" />
 
         <TextView
@@ -46,44 +51,47 @@
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:textColor="@color/colorPrimary" />
+
     </LinearLayout>
 
     <ListView
         android:id="@+id/historyListView"
         android:layout_width="match_parent"
-        android:layout_height="150dp">
+        android:layout_height="230dp">
     </ListView>
 
     <LinearLayout
         android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="bottom">
 
         <ImageButton
             android:onClick="goToOverview"
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
-            android:src="@drawable/ico_overview"/>
+            android:src="@drawable/ico_overview" />
 
         <ImageButton
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:onClick="goToRecord"
             android:background="@color/colorPrimaryOff"
-            android:src="@drawable/ico_record"/>
+            android:src="@drawable/ico_record" />
 
         <ImageButton
-            android:onClick="goToRecord"
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimary"
-            android:src="@drawable/ico_history_wh"/>
+            android:src="@drawable/ico_history_wh" />
 
     </LinearLayout>
 
