@@ -22,12 +22,7 @@ import java.util.List;
 import ciccc.ca.android_calory_cal.R;
 import im.dacer.androidcharts.PieHelper;
 import im.dacer.androidcharts.PieView;
-import lecho.lib.hellocharts.model.Line;
-import lecho.lib.hellocharts.model.LineChartData;
-import lecho.lib.hellocharts.model.PieChartData;
-import lecho.lib.hellocharts.model.PointValue;
-import lecho.lib.hellocharts.view.LineChartView;
-import lecho.lib.hellocharts.view.PieChartView;
+
 
 
 public class OverviewActivity extends AppCompatActivity {
