@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/regularPad"
         android:background="@color/colorPrimary"
-        android:text="History"
+        android:text="@string/history"
         android:textColor="@color/colorPrimaryOff"
         android:textSize="@dimen/largeText"
         android:gravity="center" />
@@ -30,7 +30,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="Choose date"
+            android:text="@string/choose_date"
             android:textColor="@color/colorPrimaryOff"/>
 
         <TextView
@@ -46,7 +46,6 @@
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:textColor="@color/colorPrimary" />
-
     </LinearLayout>
 
     <ListView
@@ -58,7 +57,7 @@
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:gravity="bottom">
 

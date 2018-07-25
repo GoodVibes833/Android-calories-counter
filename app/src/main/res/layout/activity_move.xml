@@ -51,19 +51,19 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimary"
-            android:text="Choose from list"
+            android:text="@string/choose_from_list"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimaryOff"/>
 
         <Button
-            android:onClick="goToRecordMoveInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
-            android:text="Input new food"
-            android:textSize="@dimen/regularText"
-            android:textColor="@color/colorPrimary"/>
+            android:onClick="MoveInput"
+            android:padding="@dimen/regularPad"
+            android:text="@string/input_new_food"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/regularText" />
 
     </LinearLayout>
 
@@ -90,7 +90,7 @@
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:gravity="bottom">
 

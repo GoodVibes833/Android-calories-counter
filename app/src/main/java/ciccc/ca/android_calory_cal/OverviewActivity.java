@@ -50,34 +50,31 @@ public class OverviewActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
 
                 Overview overview = dataSnapshot.getValue(Overview.class);
-                if (overview != null) {
+                if (sumOfEatCal !=0 && sumofMoveCal !=0) {
                     sumOfEatCal = overview.getSumOfEatCal();
-                    sumofMoveCal = overview.getSumOfMoveCal()*-1;
+                    sumofMoveCal = overview.getSumOfMoveCal() * -1;
 
                     System.out.println("eat cal : " + sumOfEatCal);
                     System.out.println(sumofMoveCal);
+
+                    gotCalories = findViewById(R.id.gotCalories);
+                    lostCalories = findViewById(R.id.lostCalories);
+
+                    gotCalories.setText(String.valueOf(sumOfEatCal));
+                    lostCalories.setText(String.valueOf(sumofMoveCal));
+
+                    //to percentage
+                    int percentageOfEat = 100 * sumOfEatCal / (sumOfEatCal + sumofMoveCal);
+                    int percentageOfMove = 100 * sumofMoveCal / (sumOfEatCal + sumofMoveCal);
+
+
+                    pieHelperArrayList.add(new PieHelper(percentageOfEat, Color.RED));
+                    pieHelperArrayList.add(new PieHelper(100 - percentageOfEat, Color.BLUE));
+                    pieView.setDate(pieHelperArrayList);
+                    pieView.showPercentLabel(true); //optional
+                }else {
+                    Toast.makeText(OverviewActivity.this," Please update today's activity",Toast.LENGTH_LONG).show();
                 }
-
-            gotCalories = findViewById(R.id.gotCalories);
-            lostCalories = findViewById(R.id.lostCalories);
-
-            gotCalories.setText(String.valueOf(sumOfEatCal));
-            lostCalories.setText(String.valueOf(sumofMoveCal));
-
-                //to percentage
-                int percentageOfEat = 100 * sumOfEatCal / (sumOfEatCal + sumofMoveCal);
-                int percentageOfMove = 100 * sumofMoveCal / (sumOfEatCal + sumofMoveCal);
-
-                System.out.println(percentageOfEat);
-                System.out.println(percentageOfMove);
-
-                pieHelperArrayList.add(new PieHelper(percentageOfEat, Color.RED));
-                pieHelperArrayList.add(new PieHelper(100 - percentageOfEat, Color.BLUE));
-
-                pieView.setDate(pieHelperArrayList);
-
-                pieView.showPercentLabel(true); //optional
-
             }
 
             @Override

@@ -12,6 +12,12 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +36,9 @@ public class EatActivity extends AppCompatActivity {
     ArrayList<Eat> list;
     ArrayList<Eat> list2;
     Intent intent;
+    private DatabaseReference ref_eat;
+    private DatabaseReference ref_basicInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,42 +47,94 @@ public class EatActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
-
-
-
-
-
-        // 1. read text file
-        inputStream = getResources().openRawResource(R.raw.food_calories);
-        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        foodArray = new ArrayList<>();
         list = new ArrayList<>();
-        list2 = new ArrayList<>();
 
-        try {
-            String line;
-            while (true) {
-                line = (bufferedReader.readLine());
-                if (line == null)
-                    break;
-                foodArray.add(line);
+
+        // 1. read text file -> from DB
+//
+//        inputStream = getResources().openRawResource(R.raw.food_calories);
+//        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+//        foodArray = new ArrayList<>();
+//        list2 = new ArrayList<>();
+//
+//        try {
+//            String line;
+//            while (true) {
+//                line = (bufferedReader.readLine());
+//                if (line == null)
+//                    break;
+//                foodArray.add(line);
+//
+//            }
+//            for (int i = 1; i < foodArray.size()/4; i++) {
+//                list.add(new Eat(foodArray.get(4*i), foodArray.get(2+4*i)));
+//                list2.add(new Eat(foodArray.get(4*i), foodArray.get(2+4*i)));
+//            }
+//
+//            bufferedReader.close();
+//            inputStream.close();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
+        //read from DB
+        //read from DB
+
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        ref_eat = database.getReference("DB_CaloriesInfo");
+        ref_eat.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                list.clear();
+                for(DataSnapshot historySnapShot: dataSnapshot.child("eat").getChildren()) {
+                    Eat eat = historySnapShot.getValue(Eat.class);
+                    list.add(eat);
+                }
+                // listView
+                adapter = new ArrayAdapter<>(EatActivity.this, android.R.layout.simple_list_item_1,list);
+                listView.setAdapter(adapter);
 
             }
-            for (int i = 1; i < foodArray.size()/4; i++) {
-                list.add(new Eat(foodArray.get(4*i), foodArray.get(2+4*i)));
-                list2.add(new Eat(foodArray.get(4*i), foodArray.get(2+4*i)));
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                if(databaseError != null) {
+                    Toast.makeText(EatActivity.this,databaseError.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        ref_basicInfo = database.getReference("basicInfo");
+        ref_basicInfo.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GetStartModel getStartModel = dataSnapshot.getValue(GetStartModel.class);
+                if (getStartModel == null) {
+                    Intent intent = new Intent(EatActivity.this, GetStart.class);
+                    startActivity(intent);
+                }
             }
 
-            bufferedReader.close();
-            inputStream.close();
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            }
+        });
+
+        //write to DB
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        ref_eat = database.getReference("DB_CaloriesInfo");
+//
+//        for (int i =0; i<list.size(); i++){
+//            String id = ref_eat.push().getKey();
+//            ref_eat.child("eat").child(id).setValue(list.get(i));
+//        }
+
 
         // listView
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list);
-        adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list2);
         listView.setAdapter(adapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -81,7 +142,6 @@ public class EatActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 if(list.contains(query)){
                     adapter.getFilter().filter(query);
-
                 }else{
                     Toast.makeText(EatActivity.this, "No Match found",Toast.LENGTH_LONG).show();
                 }
@@ -119,9 +179,8 @@ public class EatActivity extends AppCompatActivity {
 }
 
 
-
     public void goToRecordEatInput(View view) {
-        intent = new Intent(this, InputEat.class);
+        Intent intent = new Intent(this, InputEat.class);
         startActivity(intent);
     }
 

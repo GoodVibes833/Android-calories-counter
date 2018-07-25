@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calories per 100g : "
+            android:text="@string/calories_per_100g"
             android:textSize="@dimen/regularText"/>
 
         <EditText

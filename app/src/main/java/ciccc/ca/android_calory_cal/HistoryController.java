@@ -43,6 +43,7 @@ public class HistoryController extends AppCompatActivity {
     static int sumOfCalories;
     static int sumOfMoveCal;
     static int sumOfEatCal;
+    TextView textView;
 
 
     @Override
@@ -50,6 +51,9 @@ public class HistoryController extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 //
+        textView = findViewById(R.id.selectedDate);
+
+
         historyArrayList = new ArrayList<>();
 //        //DB
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -86,15 +90,14 @@ public class HistoryController extends AppCompatActivity {
         calendarView.setDate(calendar);
 
          final AlertDialog alertDialog = builder.create();
-        alertDialog.show();
+         alertDialog.show();
 
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
             public void onDayClick(EventDay eventDay) {
 
                 Calendar clickedDayCalendar = eventDay.getCalendar();
-                TextView textView= findViewById(R.id.selectedDate);
-                final String selectedDate = String.valueOf(clickedDayCalendar.get(Calendar.YEAR))
+                String selectedDate = String.valueOf(clickedDayCalendar.get(Calendar.YEAR))
                         +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.MONTH)+1)
                         +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.DATE));
                 textView.setText(selectedDate);
@@ -131,7 +134,7 @@ public class HistoryController extends AppCompatActivity {
                         sumOfMoveCal += Integer.valueOf(historyArrayList.get(i).getTotalCalories());
                     }
                 }
-
+                // calculate the sum of calories
                 TextView sum = findViewById(R.id.sumOfCalories);
                 sum.setText(String.valueOf(sumOfCalories));
 
@@ -141,6 +144,9 @@ public class HistoryController extends AppCompatActivity {
 
                 Overview overview = new Overview(sumOfMoveCal,sumOfEatCal);
                 ref_overview.setValue(overview);
+
+                textView.setText(date);
+
             }
 
             @Override

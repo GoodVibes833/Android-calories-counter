@@ -8,9 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class GetStart extends AppCompatActivity {
     EditText tartgetWeight_et;
@@ -20,11 +24,10 @@ public class GetStart extends AppCompatActivity {
     Button calculateDayCalories;
     Button getStarted;
     static double parameter;
-     int currentWeight;
-     int targetWeight;
-     int currentCalories;
-     int targetCalories;
-    DatabaseReference ref_basicInfo;
+    int currentWeight;
+    int targetWeight;
+    int currentCalories;
+    int targetCalories;
 
 
 
@@ -39,8 +42,6 @@ public class GetStart extends AppCompatActivity {
         calorieCurrent = findViewById(R.id.calorieCurrent);
         calculateDayCalories = findViewById(R.id.calculateDayCal);
 
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        ref_basicInfo = database.getReference("basicInfo");
 
     }
 
@@ -49,11 +50,12 @@ public class GetStart extends AppCompatActivity {
 
 
     public void getStarted(View view) {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference ref_basicInfo = database.getReference("basicInfo");
         Intent intent = new Intent(this, EatActivity.class);
-        GetStartModel getStart = new GetStartModel(currentWeight, targetWeight, currentCalories,targetCalories);
-        ref_basicInfo.setValue(getStart);
-        startActivity(intent);
-
+            GetStartModel getStart = new GetStartModel(currentWeight, targetWeight, currentCalories, targetCalories);
+            ref_basicInfo.setValue(getStart);
+            startActivity(intent);
     }
 
     public void onRadioButtonClicked(View view) {
@@ -77,8 +79,6 @@ public class GetStart extends AppCompatActivity {
                         targetWeight = Integer.valueOf(String.valueOf(tartgetWeight_et.getText()));
                         targetCalories =  (int)(targetWeight* parameter * 24);
                         calorieTarget.setText(String.valueOf((targetCalories)));
-
-
                     }
                 });
                 break;
@@ -96,7 +96,6 @@ public class GetStart extends AppCompatActivity {
                         targetWeight = Integer.valueOf(String.valueOf(tartgetWeight_et.getText()));
                         targetCalories =  (int)(targetWeight* parameter * 24);
                         calorieTarget.setText(String.valueOf((targetCalories)));
-
                     }
                 });
                     break;
