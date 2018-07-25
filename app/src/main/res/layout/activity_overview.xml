@@ -28,7 +28,7 @@
 
         <view
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="220dp"
             class="im.dacer.androidcharts.PieView"
             android:id="@+id/pie_view" />
 
@@ -133,32 +133,29 @@
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="bottom">
 
         <ImageButton
-            android:layout_width="0dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimary"
             android:src="@drawable/ico_overview_wh"/>
 
         <ImageButton
             android:onClick="goToRecord"
-            android:layout_width="0dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
             android:src="@drawable/ico_record"/>
 
         <ImageButton
             android:onClick="goToHistory"
-            android:layout_width="0dp"
+            android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
             android:src="@drawable/ico_history"/>
