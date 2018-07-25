@@ -20,13 +20,15 @@
             android:layout_height="wrap_content"
             android:text="Calorie Calculator"
             android:textSize="@dimen/largeText"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             android:text="Select your gender" />
 
         <RadioGroup
@@ -37,26 +39,30 @@
 
             <RadioButton
                 android:id="@+id/radio_female"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_weight="0.3"
                 android:text="Female"
+                android:textColor="@color/colorPrimary"
                 android:onClick="onRadioButtonClicked" />
 
             <RadioButton
                 android:id="@+id/radio_male"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_weight="0.3"
                 android:text="Male"
+                android:textColor="@color/colorPrimary"
                 android:onClick="onRadioButtonClicked" />
 
             <RadioButton
                 android:id="@+id/radio_other"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.3"
                 android:text="Other"
-                android:onClick="onRadioButtonClicked"/>
+                android:textColor="@color/colorPrimary"
+                android:onClick="onRadioButtonClicked" />
 
         </RadioGroup>
 
@@ -65,6 +71,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             android:text="Enter the weight you hope" />
 
         <LinearLayout
@@ -74,15 +81,18 @@
 
             <EditText
                 android:id="@+id/targetWeight"
-                android:layout_width="250dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_weight="0.9"
                 android:textSize="@dimen/largeText"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="right"
                 android:textSize="@dimen/regularText"
                 android:textColor="@color/colorPrimary"
                 android:text="Kg"/>
@@ -94,6 +104,7 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
             android:text="Enter the current weight" />
 
         <LinearLayout
@@ -103,15 +114,18 @@
 
             <EditText
                 android:id="@+id/currentWeight"
-                android:layout_width="250dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="20dp"
+                android:layout_weight="0.9"
                 android:textSize="@dimen/largeText"
-                android:textColor="@color/colorPrimary" />
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.1"
+                android:gravity="right"
                 android:textSize="@dimen/regularText"
                 android:textColor="@color/colorPrimary"
                 android:text="Kg"/>
@@ -125,75 +139,101 @@
             android:textSize="@dimen/regularText"
             android:background="@color/colorPrimary"
             android:textColor="@color/colorPrimaryOff"
-            android:text="Calculate calories in a day" />
+            android:text="Calculate calories in a day"
+            android:textAllCaps="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/regularText"
+                android:textColor="@color/colorPrimary"
+                android:text="You now get" />
+
+            <TextView
+                android:id="@+id/calorieCurrent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="@dimen/extralargeText"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="-----" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/regularText"
+                android:textColor="@color/colorPrimary"
+                android:text="kcal in a day" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
-            android:text="You now get"/>
+            android:text="To lose / gain your weight..." />
 
-        <TextView
-            android:id="@+id/calorieCurrent"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/extralargeText"
-            android:textColor="@color/colorPrimary"
-            android:text="---------"/>
+            android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/regularText"
-            android:textColor="@color/colorPrimary"
-            android:text="kcal in a day"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/regularText"
+                android:textColor="@color/colorPrimary"
+                android:text="You can get" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/regularText"
-            android:textColor="@color/colorPrimary"
-            android:text="To lose / gain your weight..."/>
+            <TextView
+                android:id="@+id/calorieTarget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:textSize="@dimen/extralargeText"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
+                android:text="-----" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/regularText"
-            android:textColor="@color/colorPrimary"
-            android:text="You can get"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/regularText"
+                android:textColor="@color/colorPrimary"
+                android:text="kcal today" />
 
-        <TextView
-            android:id="@+id/calorieTarget"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/extralargeText"
-            android:textColor="@color/colorPrimary"
-            android:text="---------"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/regularText"
-            android:textColor="@color/colorPrimary"
-            android:text="kcal today"/>
+        </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_gravity="bottom"
+        android:gravity="bottom"
+        android:layout_weight="1">
 
         <Button
             android:id="@+id/getStarted"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/regularPad"
             android:textSize="@dimen/largeText"
+            android:textAllCaps="false"
             android:background="@color/colorPrimary"
             android:textColor="@color/colorPrimaryOff"
             android:onClick="getStarted"
-            android:text="Get Started"/>
+            android:text="Get Started" />
 
     </LinearLayout>
 
