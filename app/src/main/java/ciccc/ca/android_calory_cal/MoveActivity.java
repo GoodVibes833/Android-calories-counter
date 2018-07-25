@@ -27,11 +27,7 @@ public class MoveActivity extends AppCompatActivity {
     SearchView searchView;
     ListView listView;
     ArrayAdapter<Move> adapter;
-    ArrayAdapter<Move> adapter2;
-    TextView eat_item;
-    InputStream inputStream;
-    BufferedReader bufferedReader;
-    ArrayList<String> MoveArray;
+
     ArrayList<Move> list;
     Intent intent;
     private DatabaseReference ref_move;
@@ -40,7 +36,7 @@ public class MoveActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_eat);
+        setContentView(R.layout.activity_move);
 
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
@@ -153,7 +149,6 @@ public class MoveActivity extends AppCompatActivity {
 
         // tyep eat_gram -> calculate calories
 }
-
 
 
     public void goToRecordEat(View view) {

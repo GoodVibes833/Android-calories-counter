@@ -67,7 +67,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="calculate"
+            android:text="@string/_1_calculate"
             android:textColor="@color/colorPrimaryOff"
             android:onClick="calculateTotal"/>
 
@@ -75,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorPrimary"
-            android:text="add to histry"
+            android:text="@string/_2_add_to_histry"
             android:textColor="@color/colorPrimaryOff"
             android:onClick="addToHistory"/>
 
@@ -84,7 +84,7 @@
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:gravity="bottom">
 

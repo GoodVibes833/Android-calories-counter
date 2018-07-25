@@ -28,6 +28,28 @@
     <string name="material_calendar_today_button">Today</string>
     <string name="material_calendar_positive_button">OK</string>
     <string name="material_calendar_negative_button">Cancel</string>
+    <string name="you_lost">You lost</string>
+    <string name="empty">___</string>
+    <string name="cal">cal</string>
+    <string name="input_new_food">Input new food</string>
+    <string name="choose_from_list">Choose from list</string>
+    <string name="exercise">Exercise :</string>
+    <string name="lost_calories_10mins">Lost Calories(10mins) :</string>
+    <string name="calories_per_100g">Calories per 100g :</string>
+    <string name="history">History</string>
+    <string name="choose_date">Choose date</string>
+
+    <string name="cal_today">cal today</string>
+    <string name="cal_in_a_day">cal in a day</string>
+    <string name="you_now_get">You now get</string>
+    <string name="kg">Kg</string>
+    <string name="enter_the_weight_you_hope">Enter the weight you hope</string>
+    <string name="move">Move</string>
+    <string name="eat">Eat</string>
+    <string name="record">Record</string>
+    <string name="_1_calculate">1. calculate</string>
+    <string name="_2_add_to_histry">2. add to histry</string>
+
 
 
 </resources>

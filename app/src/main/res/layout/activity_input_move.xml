@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/regularPad"
         android:background="@color/colorPrimary"
-        android:text="Record"
+        android:text="@string/record"
         android:textColor="@color/colorPrimaryOff"
         android:textSize="@dimen/largeText"
         android:gravity="center" />
@@ -32,7 +32,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Exercise : "
+            android:text="@string/exercise"
             android:textSize="@dimen/regularText" />
 
         <EditText
@@ -43,7 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Lost Calories(10mins) : "
+            android:text="@string/lost_calories_10mins"
             android:textSize="@dimen/regularText" />
 
         <EditText
@@ -64,7 +64,7 @@
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_gravity="bottom"
         android:gravity="bottom">
 

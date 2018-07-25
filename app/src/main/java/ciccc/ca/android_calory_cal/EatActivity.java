@@ -37,6 +37,7 @@ public class EatActivity extends AppCompatActivity {
     ArrayList<Eat> list2;
     Intent intent;
     private DatabaseReference ref_eat;
+    private DatabaseReference ref_basicInfo;
 
 
     @Override
@@ -79,9 +80,10 @@ public class EatActivity extends AppCompatActivity {
 
         //read from DB
         //read from DB
+
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref_eat = database.getReference("DB_CaloriesInfo");
-
         ref_eat.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -104,7 +106,22 @@ public class EatActivity extends AppCompatActivity {
             }
         });
 
+        ref_basicInfo = database.getReference("basicInfo");
+        ref_basicInfo.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GetStartModel getStartModel = dataSnapshot.getValue(GetStartModel.class);
+                if (getStartModel == null) {
+                    Intent intent = new Intent(EatActivity.this, GetStart.class);
+                    startActivity(intent);
+                }
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
         //write to DB
 //        FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -118,7 +135,6 @@ public class EatActivity extends AppCompatActivity {
 
         // listView
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list);
-        adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list2);
         listView.setAdapter(adapter);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -126,7 +142,6 @@ public class EatActivity extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 if(list.contains(query)){
                     adapter.getFilter().filter(query);
-
                 }else{
                     Toast.makeText(EatActivity.this, "No Match found",Toast.LENGTH_LONG).show();
                 }
@@ -164,9 +179,8 @@ public class EatActivity extends AppCompatActivity {
 }
 
 
-
     public void goToRecordEatInput(View view) {
-        intent = new Intent(this, InputEat.class);
+        Intent intent = new Intent(this, InputEat.class);
         startActivity(intent);
     }
 

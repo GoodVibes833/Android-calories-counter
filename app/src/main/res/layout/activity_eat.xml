@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="@dimen/regularPad"
         android:background="@color/colorPrimary"
-        android:text="Record"
+        android:text="@string/record"
         android:textColor="@color/colorPrimaryOff"
         android:textSize="@dimen/largeText"
         android:gravity="center" />
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_onbtn"
-            android:text="Eat"
+            android:text="@string/eat"
             android:textSize="@dimen/largeText"
             android:textColor="@color/colorPrimaryOff"/>
 
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/style_offbtn"
-            android:text="Move"
+            android:text="@string/move"
             android:textSize="@dimen/largeText"
             android:textColor="@color/colorPrimary"/>
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimary"
-            android:text="Choose from list"
+            android:text="@string/choose_from_list"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimaryOff"/>
 
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
-            android:text="Input new food"
+            android:text="@string/input_new_food"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"/>
 
@@ -81,11 +81,13 @@
     </LinearLayout>
 
 
-    <ListView
-        android:id="@+id/listView"
-        android:layout_width="match_parent"
-        android:layout_height="150dp">
-    </ListView>
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="180dp">
+        </ListView>
+
 
     <LinearLayout
         android:layout_weight="1"
