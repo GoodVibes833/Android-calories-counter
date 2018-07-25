@@ -17,11 +17,24 @@
         android:textSize="@dimen/largeText"
         android:gravity="center" />
 
-    <view
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        class="im.dacer.androidcharts.PieView"
-        android:id="@+id/pie_view" />
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <view
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            class="im.dacer.androidcharts.PieView"
+            android:id="@+id/pie_view" />
+
+        <TextView
+            android:id="@+id/chartBasicCalories_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"/>
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
