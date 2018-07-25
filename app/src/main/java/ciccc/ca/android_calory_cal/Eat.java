@@ -4,6 +4,9 @@ public class Eat {
     String food;
     String calories;
 
+    public Eat() {
+    }
+
     public Eat(String food, String calories) {
         this.food = food;
         this.calories = calories;

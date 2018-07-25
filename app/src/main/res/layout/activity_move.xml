@@ -56,14 +56,14 @@
             android:textColor="@color/colorPrimaryOff"/>
 
         <Button
-            android:onClick="goToRecordMoveInput"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
+            android:onClick="MoveInput"
+            android:padding="@dimen/regularPad"
             android:text="Input new food"
-            android:textSize="@dimen/regularText"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/regularText" />
 
     </LinearLayout>
 

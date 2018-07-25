@@ -11,6 +11,12 @@ import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -28,6 +34,8 @@ public class MoveActivity extends AppCompatActivity {
     ArrayList<String> MoveArray;
     ArrayList<Move> list;
     Intent intent;
+    private DatabaseReference ref_move;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,40 +44,74 @@ public class MoveActivity extends AppCompatActivity {
 
         searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
+        list = new ArrayList<>();
 
 
         // 1. read text file
-        inputStream = getResources().openRawResource(R.raw.exercise_calories);
-        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-        MoveArray = new ArrayList<>();
-        list = new ArrayList<>();
+//        inputStream = getResources().openRawResource(R.raw.exercise_calories);
+//        bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+//        MoveArray = new ArrayList<>();
+//
+//        try {
+//            String line;
+//            while (true) {
+//                line = (bufferedReader.readLine());
+//                if (line == null)
+//                    break;
+//                MoveArray.add(line);
+//
+//            }
+//            for (int i = 1; i < MoveArray.size()/5-2; i++) {
+//                list.add(new Move(MoveArray.get(5*i), '-' + MoveArray.get(5*i+1)));
+//            }
+//
+//            bufferedReader.close();
+//            inputStream.close();
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        try {
-            String line;
-            while (true) {
-                line = (bufferedReader.readLine());
-                if (line == null)
-                    break;
-                MoveArray.add(line);
+
+        //read from DB
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        ref_move = database.getReference("DB_CaloriesInfo");
+
+        ref_move.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                list.clear();
+                for(DataSnapshot historySnapShot: dataSnapshot.child("move").getChildren()) {
+                    Move move = historySnapShot.getValue(Move.class);
+                    list.add(move);
+                }
+                // listView
+                adapter = new ArrayAdapter<>(MoveActivity.this, android.R.layout.simple_list_item_1,list);
+                listView.setAdapter(adapter);
 
             }
-            for (int i = 1; i < MoveArray.size()/5-2; i++) {
-                list.add(new Move(MoveArray.get(5*i), '-' + MoveArray.get(5*i+1)));
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                if(databaseError != null) {
+                    Toast.makeText(MoveActivity.this,databaseError.getMessage(),Toast.LENGTH_LONG).show();
+                }
             }
+        });
 
-            bufferedReader.close();
-            inputStream.close();
+        //write to DB
+//        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        ref_move = database.getReference("DB_CaloriesInfo");
+//        for (int i =0; i<list.size(); i++){
+//            String id = ref_move.push().getKey();
+//
+//            ref_move.child("move").child(id).setValue(list.get(i));
+//        }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        // listView
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,list);
-        listView.setAdapter(adapter);
+
 
         //searchView
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -112,10 +154,7 @@ public class MoveActivity extends AppCompatActivity {
         // tyep eat_gram -> calculate calories
 }
 
-//    public void goToRecordMoveInput(View view) {
-//        intent = new Intent(this, InputMove.class);
-//        startActivity(intent);
-//    }
+
 
     public void goToRecordEat(View view) {
         intent = new Intent(this, EatActivity.class);
@@ -132,7 +171,8 @@ public class MoveActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goToRecordMoveInput(View view) {
+
+    public void MoveInput(View view) {
         intent = new Intent(this, InputMove.class);
         startActivity(intent);
     }

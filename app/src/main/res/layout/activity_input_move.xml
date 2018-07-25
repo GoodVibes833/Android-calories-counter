@@ -36,18 +36,18 @@
             android:textSize="@dimen/regularText" />
 
         <EditText
-            android:id="@+id/foodName"
+            android:id="@+id/exerciseName_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Calories per 100g : "
+            android:text="Lost Calories(10mins) : "
             android:textSize="@dimen/regularText" />
 
         <EditText
-            android:id="@+id/caloriesPerGram"
+            android:id="@+id/exerciseCaloriesLost_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

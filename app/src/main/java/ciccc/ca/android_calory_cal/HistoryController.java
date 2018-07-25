@@ -131,7 +131,7 @@ public class HistoryController extends AppCompatActivity {
                         sumOfMoveCal += Integer.valueOf(historyArrayList.get(i).getTotalCalories());
                     }
                 }
-
+                // calculate the sum of calories
                 TextView sum = findViewById(R.id.sumOfCalories);
                 sum.setText(String.valueOf(sumOfCalories));
 

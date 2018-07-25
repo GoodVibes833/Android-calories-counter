@@ -27,8 +27,12 @@
 
         </activity>
         <activity android:name=".CalculateMoveCalories" />
-        <activity android:name=".InputEat"></activity>
-        <activity android:name=".InputMove"></activity>
+        <activity android:name=".InputEat">
+
+        </activity>
+        <activity android:name=".InputMove">
+
+        </activity>
     </application>
 
 </manifest>
