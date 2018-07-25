@@ -17,6 +17,7 @@
         android:text="Overview"
         android:textColor="@color/colorPrimaryOff"
         android:textSize="@dimen/largeText"
+        android:textStyle="bold"
         android:gravity="center" />
 
     <LinearLayout
@@ -45,9 +46,10 @@
 
             <TextView
                 android:id="@+id/basicCalories"
-                android:text="xxx"
+                android:text="0"
                 android:textSize="@dimen/extralargeText"
                 android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -76,9 +78,10 @@
 
             <TextView
                 android:id="@+id/gotCalories"
-                android:text="xxx"
+                android:text="0"
                 android:textSize="@dimen/extralargeText"
                 android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -107,9 +110,10 @@
 
             <TextView
                 android:id="@+id/lostCalories"
-                android:text="xxx"
+                android:text="0"
                 android:textSize="@dimen/extralargeText"
                 android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="10dp"
@@ -134,24 +138,27 @@
         android:gravity="bottom">
 
         <ImageButton
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimary"
             android:src="@drawable/ico_overview_wh"/>
 
         <ImageButton
             android:onClick="goToRecord"
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
             android:src="@drawable/ico_record"/>
 
         <ImageButton
             android:onClick="goToHistory"
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
             android:src="@drawable/ico_history"/>
