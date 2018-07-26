@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -15,15 +16,17 @@
         android:text="Overview"
         android:textColor="@color/colorPrimaryOff"
         android:textSize="@dimen/largeText"
+        android:textStyle="bold"
         android:gravity="center" />
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <view
             android:layout_width="300dp"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             class="im.dacer.androidcharts.PieView"
             android:id="@+id/pie_view" />
 
@@ -36,12 +39,13 @@
             android:layout_marginTop="44dp"
             android:gravity="center"
             android:text="eatCal - moveCal" />
+
         <TextView
             android:id="@+id/chartGotCalories_tv"
             android:text="moveCal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"/>
+            android:gravity="center" />
 
         <TextView
             android:id="@+id/chartLostCalories_tv"
@@ -54,120 +58,149 @@
 
     </RelativeLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
         android:gravity="center">
 
         <TextView
-            android:text="you can get"
+            android:text="You can get"
             android:textSize="@dimen/regularText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"/>
+            android:layout_weight="0.3"
+            android:textColor="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/basicCalories"
-            android:text="___"
+            android:text="0"
             android:textSize="@dimen/extralargeText"
             android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_weight="0.5" />
 
         <TextView
-            android:text="cal"
+            android:text="kcal"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="right"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
         android:gravity="center">
 
         <TextView
             android:text="@string/you_got"
             android:textSize="@dimen/regularText"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"/>
+            android:layout_weight="0.3"
+            android:textColor="@color/colorPrimary" />
 
         <TextView
             android:id="@+id/gotCalories"
-            android:text="___"
+            android:text="0"
             android:textSize="@dimen/extralargeText"
             android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_weight="0.5" />
 
         <TextView
-            android:text="cal"
+            android:text="kcal"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="right" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingRight="40dp"
+        android:paddingLeft="40dp"
         android:gravity="center">
 
         <TextView
             android:text="@string/you_lost"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.3" />
 
         <TextView
             android:id="@+id/lostCalories"
-            android:text="@string/empty"
+            android:text="0"
             android:textSize="@dimen/extralargeText"
             android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:layout_weight="0.5" />
 
         <TextView
-            android:text="@string/cal"
+            android:text="kcal"
             android:textSize="@dimen/regularText"
             android:textColor="@color/colorPrimary"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:gravity="right" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="bottom">
 
         <ImageButton
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimary"
             android:src="@drawable/ico_overview_wh" />
 
         <ImageButton
             android:onClick="goToRecord"
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
             android:src="@drawable/ico_record" />
 
         <ImageButton
             android:onClick="goToHistory"
-            android:layout_width="130dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.3"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
             android:src="@drawable/ico_history" />
