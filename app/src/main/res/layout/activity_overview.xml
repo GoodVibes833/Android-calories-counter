@@ -31,7 +31,7 @@
             android:id="@+id/chartBasicCalories_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"/>
+            android:gravity="center"/>
 
     </RelativeLayout>
 
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimary"
-            android:src="@drawable/ico_overview_wh"/>
+            android:src="@drawable/ico_overview_wh" />
 
         <ImageButton
             android:onClick="goToRecord"
@@ -143,7 +143,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
-            android:src="@drawable/ico_record"/>
+            android:src="@drawable/ico_record" />
 
         <ImageButton
             android:onClick="goToHistory"
@@ -151,7 +151,7 @@
             android:layout_height="wrap_content"
             android:padding="@dimen/regularPad"
             android:background="@color/colorPrimaryOff"
-            android:src="@drawable/ico_history"/>
+            android:src="@drawable/ico_history" />
 
     </LinearLayout>
 
