@@ -78,7 +78,7 @@ public class OverviewActivity extends AppCompatActivity {
                     pieView.showPercentLabel(false); //optional
 
                 }else {
-                    Toast.makeText(OverviewActivity.this,"Please update today's activity",Toast.LENGTH_LONG).show();
+                    Toast.makeText(OverviewActivity.this,"Please record today's activity",Toast.LENGTH_LONG).show();
                 }
             }
 

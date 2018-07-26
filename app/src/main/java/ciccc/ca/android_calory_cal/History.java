@@ -20,7 +20,7 @@ public class History {
 
     @Override
     public String toString() {
-        return date + " -> " + item + "," + totalCalories + "calories";
+        return item + ", " + totalCalories + "calories";
     }
 
     public String getDate() {

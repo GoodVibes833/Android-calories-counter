@@ -32,7 +32,7 @@
             android:text="item"/>
 
         <TextView
-            android:textSize="@dimen/regularText"
+            android:textSize="20sp"
             android:text="×"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -41,11 +41,11 @@
             android:id="@+id/gram"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:hint="Input value"
+            android:hint="@string/calories_per_100g"
             android:inputType="number" />
 
         <TextView
-            android:textSize="@dimen/regularText"
+            android:textSize="20sp"
             android:text="="
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
