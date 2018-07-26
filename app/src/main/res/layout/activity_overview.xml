@@ -31,7 +31,26 @@
             android:id="@+id/chartBasicCalories_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="44dp"
+            android:gravity="center"
+            android:text="eatCal - moveCal" />
+        <TextView
+            android:id="@+id/chartGotCalories_tv"
+            android:text="moveCal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/chartLostCalories_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/chartGotCalories_tv"
+            android:gravity="center"
+            android:text="LeftCal" />
 
     </RelativeLayout>
 

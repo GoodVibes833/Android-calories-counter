@@ -29,7 +29,10 @@ public class OverviewActivity extends AppCompatActivity {
     TextView basicCalories_tv;
     TextView gotCalories;
     TextView lostCalories;
+
     TextView chartBasicCalories_tv;
+    TextView charGotCalories_tv;
+    TextView chartLostCalories_tv;
     Intent intent;
     DatabaseReference ref_overview;
     DatabaseReference ref_getStarted;
@@ -47,50 +50,6 @@ public class OverviewActivity extends AppCompatActivity {
         final ArrayList<PieHelper> pieHelperArrayList = new ArrayList<>();
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        ref_overview = database.getReference("overview");
-        ref_overview.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                Overview overview = dataSnapshot.getValue(Overview.class);
-                sumOfEatCal = overview.getSumOfEatCal();
-                sumofMoveCal = overview.getSumOfMoveCal() * -1;
-
-                if (sumOfEatCal !=0 && sumofMoveCal !=0) {
-
-                    System.out.println("eat cal : " + sumOfEatCal);
-                    System.out.println(sumofMoveCal);
-
-                    gotCalories = findViewById(R.id.gotCalories);
-                    lostCalories = findViewById(R.id.lostCalories);
-
-                    gotCalories.setText(String.valueOf(sumOfEatCal));
-                    lostCalories.setText(String.valueOf(sumofMoveCal));
-                    //gragh
-
-                    //to percentage
-                    int percentageOfEat = 100 * sumOfEatCal / (sumOfEatCal + sumofMoveCal);
-                    int percentageOfMove = 100 * sumofMoveCal / (sumOfEatCal + sumofMoveCal);
-
-                    pieHelperArrayList.add(new PieHelper(percentageOfEat, Color.RED));
-                    pieHelperArrayList.add(new PieHelper(100 - percentageOfEat, Color.BLUE));
-                    pieView.setDate(pieHelperArrayList);
-                    pieView.showPercentLabel(false); //optional
-
-                }else {
-                    Toast.makeText(OverviewActivity.this,"Please record today's activity",Toast.LENGTH_LONG).show();
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                if(databaseError != null) {
-                    Toast.makeText(OverviewActivity.this,databaseError.getMessage(),Toast.LENGTH_LONG).show();
-                }
-            }
-
-
-        });
 
         ref_getStarted = database.getReference("basicInfo");
         ref_getStarted.addValueEventListener(new ValueEventListener() {
@@ -116,6 +75,62 @@ public class OverviewActivity extends AppCompatActivity {
 
             }
         });
+
+
+        ref_overview = database.getReference("overview");
+        ref_overview.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+
+                Overview overview = dataSnapshot.getValue(Overview.class);
+                sumOfEatCal = overview.getSumOfEatCal();
+                sumofMoveCal = overview.getSumOfMoveCal() * -1;
+
+                if (sumOfEatCal !=0 && sumofMoveCal !=0 &&currentCalories != 0) {
+
+                    System.out.println("eat cal : " + sumOfEatCal);
+                    System.out.println(sumofMoveCal);
+
+                    gotCalories = findViewById(R.id.gotCalories);
+                    lostCalories = findViewById(R.id.lostCalories);
+                    charGotCalories_tv = findViewById(R.id.chartGotCalories_tv);
+                    chartLostCalories_tv = findViewById(R.id.chartLostCalories_tv);
+
+                    gotCalories.setText(String.valueOf(sumOfEatCal));
+                    lostCalories.setText(String.valueOf(sumofMoveCal));
+                    charGotCalories_tv.setText(String.valueOf(sumOfEatCal));
+                    chartLostCalories_tv.setText(String.valueOf(sumofMoveCal));
+
+                    //gragh
+
+                    //to percentage
+                    int percentageOfEat = 100 * sumOfEatCal-sumofMoveCal / currentCalories;
+                    int percentageOfMove = 100 * (sumofMoveCal) / currentCalories;
+                    int percentageOfLeft = 100 * (currentCalories- sumOfEatCal) / currentCalories;
+
+                    pieHelperArrayList.add(new PieHelper(percentageOfEat, Color.BLACK));
+                    pieHelperArrayList.add(new PieHelper(percentageOfMove, Color.GRAY));
+                    pieHelperArrayList.add(new PieHelper(percentageOfLeft, Color.BLUE));
+
+                    pieView.setDate(pieHelperArrayList);
+                    pieView.showPercentLabel(false); //optional
+
+                }else {
+                    Toast.makeText(OverviewActivity.this,"Please record today's activity",Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                if(databaseError != null) {
+                    Toast.makeText(OverviewActivity.this,databaseError.getMessage(),Toast.LENGTH_LONG).show();
+                }
+            }
+
+
+        });
+
+
 
 
 

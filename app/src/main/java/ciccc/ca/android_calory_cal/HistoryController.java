@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -38,6 +39,7 @@ public class HistoryController extends AppCompatActivity {
     Intent intent;
     private DatabaseReference ref_history;
     private DatabaseReference ref_overview;
+    private DatabaseReference ref_basicInfo;
     Date today = new Date();
     private String TAG = "HistoryController";
     static int sumOfCalories;
@@ -59,19 +61,28 @@ public class HistoryController extends AppCompatActivity {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         ref_history = database.getReference("history");
         ref_overview = database.getReference("overview");
+        ref_basicInfo = database.getReference("basicInfo");
 //
 //        //VIEW
         historyListView = findViewById(R.id.historyListView);
+
         final String date = today.getYear()+1900 + "-" + (1+today.getMonth()) + "-" + today.getDate();
 
         // Read from the database
         readFromTheDatabase(date);
+
+
+
 
     }
 
 
     //      https://github.com/Applandeo/Material-Calendar-View
     public void chooseDate(View view) throws OutOfDateRangeException {
+
+
+
+        // calender library
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.activity_history_calendar,null);
@@ -79,22 +90,49 @@ public class HistoryController extends AppCompatActivity {
 
         //adding images
         List<EventDay> events = new ArrayList<>();
-        Calendar calendar = Calendar.getInstance();
+        final Calendar calendar = Calendar.getInstance();
         events.add(new EventDay(calendar, R.drawable.popup_green));
 
         final CalendarView calendarView = dialogView.findViewById(R.id.calendarView);
         calendarView.setEvents(events);
 
+
+        //calendar icon
+        ref_basicInfo.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                GetStartModel getStartModel = dataSnapshot.getValue(GetStartModel.class);
+                if (getStartModel != null) {
+                    int currentWeight = getStartModel.getCurrentWeight();
+                    int targetWeight = getStartModel.getTargetWeight();
+
+                    if(currentWeight>targetWeight && sumOfCalories >=0){
+                        //setting current date
+                        calendar.set(2018, 6, 26);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         //setting current date
         calendar.set(2018, 6, 20);
+
         calendarView.setDate(calendar);
 
          final AlertDialog alertDialog = builder.create();
          alertDialog.show();
-
         calendarView.setOnDayClickListener(new OnDayClickListener() {
             @Override
             public void onDayClick(EventDay eventDay) {
+
+
 
                 Calendar clickedDayCalendar = eventDay.getCalendar();
                 String selectedDate = String.valueOf(clickedDayCalendar.get(Calendar.YEAR))
@@ -108,11 +146,15 @@ public class HistoryController extends AppCompatActivity {
             }
         });
 
+
+
     }
+
     private void readFromTheDatabase(final String date) {
+
         ref_history.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(final DataSnapshot dataSnapshot) {
                 historyArrayList.clear();
                 for(DataSnapshot historySnapShot: dataSnapshot.child(date).getChildren()) {
                     History history = historySnapShot.getValue(History.class);
@@ -120,6 +162,18 @@ public class HistoryController extends AppCompatActivity {
                 }
                 adapter = new ArrayAdapter<>(HistoryController.this, android.R.layout.simple_list_item_1,historyArrayList);
                 historyListView.setAdapter(adapter);
+
+                //short onclick
+                historyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        //dialog -> delete
+                        
+
+
+                    }
+                });
+
 
                 //find the amount of calories and set text and send to overview
                  sumOfCalories = 0;
@@ -144,7 +198,6 @@ public class HistoryController extends AppCompatActivity {
 
                 Overview overview = new Overview(sumOfMoveCal,sumOfEatCal);
                 ref_overview.setValue(overview);
-
                 textView.setText(date);
 
             }
