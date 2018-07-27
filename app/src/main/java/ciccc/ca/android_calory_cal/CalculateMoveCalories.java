@@ -86,7 +86,7 @@ public class CalculateMoveCalories extends AppCompatActivity {
         String id = ref_history.push().getKey();
 
         //set data
-        History history = new History(id, date, "MOVE : " + move, total);
+        History history = new History(date, "MOVE : " + move, total);
         ref_history.child(date).child(id).setValue(history);
 
 

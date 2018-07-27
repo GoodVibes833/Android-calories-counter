@@ -143,6 +143,7 @@ public class MoveActivity extends AppCompatActivity {
                 intent.putExtra("calories", move.getCalories());
                 startActivity(intent);
 
+
             }
         });
 
