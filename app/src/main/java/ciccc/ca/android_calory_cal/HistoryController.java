@@ -11,7 +11,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -91,7 +93,7 @@ public class HistoryController extends AppCompatActivity {
         //adding images
         List<EventDay> events = new ArrayList<>();
         final Calendar calendar = Calendar.getInstance();
-        events.add(new EventDay(calendar, R.drawable.popup_green));
+        events.add(new EventDay(calendar, R.drawable.img_success));
 
         final CalendarView calendarView = dialogView.findViewById(R.id.calendarView);
         calendarView.setEvents(events);
@@ -132,8 +134,6 @@ public class HistoryController extends AppCompatActivity {
             @Override
             public void onDayClick(EventDay eventDay) {
 
-
-
                 Calendar clickedDayCalendar = eventDay.getCalendar();
                 String selectedDate = String.valueOf(clickedDayCalendar.get(Calendar.YEAR))
                         +'-'+   String.valueOf(clickedDayCalendar.get(Calendar.MONTH)+1)
@@ -166,9 +166,44 @@ public class HistoryController extends AppCompatActivity {
                 //short onclick
                 historyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public void onItemClick(AdapterView<?> parent, View view, final int position, long idd) {
                         //dialog -> delete
-                        
+
+                        final History history = historyArrayList.get(position);
+                        final String id = history.getId();
+
+                        //1. build dialog with custome layout
+                        // inflate custom view -> set it on builder
+                        AlertDialog.Builder builder = new AlertDialog.Builder(HistoryController.this);
+
+                        LayoutInflater inflater = getLayoutInflater();
+                        View dialogView = inflater.inflate(R.layout.dialog_delete_history,null);
+                        builder.setView(dialogView);
+
+
+//                        builder.setTitle("delete?");
+                        final AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+
+
+                        Button delete_btn = dialogView.findViewById(R.id.dialog_delete);
+                        delete_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                ref_history.child(date).child(id).removeValue();
+                                alertDialog.dismiss();
+                            }
+                        });
+
+                        Button cancel_btn = dialogView.findViewById(R.id.dialog_cancel);
+                        cancel_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alertDialog.dismiss();
+                            }
+                        });
+
 
 
                     }
