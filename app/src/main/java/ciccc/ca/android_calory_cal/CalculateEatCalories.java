@@ -87,7 +87,7 @@ public class CalculateEatCalories extends AppCompatActivity {
 
 
             //set data
-            History history = new History(date, "EAT : " + eat, total);
+            History history = new History(id, date, "EAT : " + eat, total);
             ref_history.child(date).child(id).setValue(history);
 
 

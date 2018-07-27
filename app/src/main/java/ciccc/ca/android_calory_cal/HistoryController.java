@@ -166,9 +166,44 @@ public class HistoryController extends AppCompatActivity {
                 //short onclick
                 historyListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
-                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long idd) {
                         //dialog -> delete
-                        
+
+                        History history = historyArrayList.get(position);
+                        final String id = history.getId();
+
+                        //1. build dialog with custome layout
+                        // inflate custom view -> set it on builder
+                        AlertDialog.Builder builder = new AlertDialog.Builder(HistoryController.this);
+
+                        LayoutInflater inflater = getLayoutInflater();
+                        View dialogView = inflater.inflate(R.layout.dialog_history_delete,null);
+                        builder.setView(dialogView);
+
+
+                        //                        builder.setTitle("delete?");
+                        final AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+
+
+                        Button delete_btn = dialogView.findViewById(R.id.dialog_delete);
+                        delete_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+
+                                ref_history.child(date).child(id).removeValue();
+                                alertDialog.dismiss();
+                            }
+                        });
+
+                        Button cancel_btn = dialogView.findViewById(R.id.dialog_cancel);
+                        cancel_btn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                alertDialog.dismiss();
+                            }
+                        });
+
 
 
                     }
