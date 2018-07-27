@@ -21,6 +21,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:padding="@dimen/regularPad">
 
         <Button
@@ -29,7 +30,8 @@
             android:background="@drawable/style_onbtn"
             android:text="@string/eat"
             android:textSize="@dimen/largeText"
-            android:textColor="@color/colorPrimaryOff"/>
+            android:textColor="@color/colorPrimaryOff"
+            android:layout_margin="10dp"/>
 
         <Button
             android:onClick="goToRecordMove"
@@ -38,7 +40,8 @@
             android:background="@drawable/style_offbtn"
             android:text="@string/move"
             android:textSize="@dimen/largeText"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary"
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 
@@ -67,25 +70,25 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/regularPad">
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:padding="@dimen/regularPad">-->
 
-        <SearchView
-            android:id="@+id/searchView"
-            android:layout_width="match_parent"
-            android:layout_height="30dp">
-        </SearchView>
+        <!--<SearchView-->
+            <!--android:id="@+id/searchView"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp">-->
+        <!--</SearchView>-->
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
 
 
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
-            android:layout_height="180dp">
+            android:layout_height="280dp">
         </ListView>
 
 
@@ -98,23 +101,26 @@
 
             <ImageButton
                 android:onClick="goToOverview"
-                android:layout_width="130dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.3"
                 android:padding="@dimen/regularPad"
                 android:background="@color/colorPrimaryOff"
                 android:src="@drawable/ico_overview"/>
 
             <ImageButton
-                android:layout_width="130dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.3"
                 android:padding="@dimen/regularPad"
                 android:background="@color/colorPrimary"
                 android:src="@drawable/ico_record_wh"/>
 
             <ImageButton
                 android:onClick="goToHistory"
-                android:layout_width="130dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="0.3"
                 android:padding="@dimen/regularPad"
                 android:background="@color/colorPrimaryOff"
                 android:src="@drawable/ico_history"/>

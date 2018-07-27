@@ -32,7 +32,7 @@ public class CalculateMoveCalories extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calculate_eat_calories);
+        setContentView(R.layout.activity_calculate_move_calories);
 
         gram = findViewById(R.id.gram);
         tatalcalories = findViewById(R.id.tatalcalories);

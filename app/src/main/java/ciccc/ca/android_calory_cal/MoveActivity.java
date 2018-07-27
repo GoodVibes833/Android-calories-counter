@@ -38,7 +38,7 @@ public class MoveActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_move);
 
-        searchView = findViewById(R.id.searchView);
+//        searchView = findViewById(R.id.searchView);
         listView = findViewById(R.id.listView);
         list = new ArrayList<>();
 
@@ -108,24 +108,24 @@ public class MoveActivity extends AppCompatActivity {
 
 
         //searchView
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                if(list.contains(query)){
-                    adapter.getFilter().filter(query);
-
-                }else{
-                    Toast.makeText(MoveActivity.this, "No Match found",Toast.LENGTH_LONG).show();
-                }
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
-                return false;
-            }
-        });
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                if(list.contains(query)){
+//                    adapter.getFilter().filter(query);
+//
+//                }else{
+//                    Toast.makeText(MoveActivity.this, "No Match found",Toast.LENGTH_LONG).show();
+//                }
+//                return false;
+//            }
+//
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                adapter.getFilter().filter(newText);
+//                return false;
+//            }
+//        });
 
 
         //short click

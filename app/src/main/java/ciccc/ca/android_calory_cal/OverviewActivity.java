@@ -30,9 +30,7 @@ public class OverviewActivity extends AppCompatActivity {
     TextView gotCalories;
     TextView lostCalories;
 
-    TextView chartBasicCalories_tv;
     TextView charGotCalories_tv;
-    TextView chartLostCalories_tv;
     Intent intent;
     DatabaseReference ref_overview;
     DatabaseReference ref_getStarted;
@@ -62,10 +60,7 @@ public class OverviewActivity extends AppCompatActivity {
 
                 }
                 basicCalories_tv = findViewById(R.id.basicCalories);
-                chartBasicCalories_tv = findViewById(R.id.chartBasicCalories_tv);
-
                 basicCalories_tv.setText(String.valueOf(currentCalories));
-                chartBasicCalories_tv.setText(String.valueOf(currentCalories));
 
 
             }
@@ -87,30 +82,29 @@ public class OverviewActivity extends AppCompatActivity {
                 sumofMoveCal = overview.getSumOfMoveCal() * -1;
 
                 if (sumOfEatCal !=0 && sumofMoveCal !=0 &&currentCalories != 0) {
-
+                    System.out.println("current : " +currentCalories);
                     System.out.println("eat cal : " + sumOfEatCal);
-                    System.out.println(sumofMoveCal);
+                    System.out.println("move cal : " + sumofMoveCal);
 
                     gotCalories = findViewById(R.id.gotCalories);
                     lostCalories = findViewById(R.id.lostCalories);
                     charGotCalories_tv = findViewById(R.id.chartGotCalories_tv);
-                    chartLostCalories_tv = findViewById(R.id.chartLostCalories_tv);
 
                     gotCalories.setText(String.valueOf(sumOfEatCal));
                     lostCalories.setText(String.valueOf(sumofMoveCal));
-                    charGotCalories_tv.setText(String.valueOf(sumOfEatCal));
-                    chartLostCalories_tv.setText(String.valueOf(sumofMoveCal));
+                    charGotCalories_tv.setText(String.valueOf((currentCalories + sumofMoveCal - sumOfEatCal)));
 
                     //gragh
 
                     //to percentage
-                    int percentageOfEat = 100 * sumOfEatCal-sumofMoveCal / currentCalories;
-                    int percentageOfMove = 100 * (sumofMoveCal) / currentCalories;
-                    int percentageOfLeft = 100 * (currentCalories- sumOfEatCal) / currentCalories;
+                    int percentageOfBurn = 100 * (sumOfEatCal - sumofMoveCal)/currentCalories ;
+                    int percentageOfLeft = 100 * (sumofMoveCal) / currentCalories;
+//                    int percentageOfLeft = 100 * (currentCalories- sumOfEatCal) / currentCalories;
+                    System.out.println(percentageOfBurn);
 
-                    pieHelperArrayList.add(new PieHelper(percentageOfEat, Color.BLACK));
-                    pieHelperArrayList.add(new PieHelper(percentageOfMove, Color.GRAY));
-                    pieHelperArrayList.add(new PieHelper(percentageOfLeft, Color.BLUE));
+                    pieHelperArrayList.add(new PieHelper(percentageOfBurn, Color.rgb(78, 186, 106)));
+                    pieHelperArrayList.add(new PieHelper(100-percentageOfBurn, Color.rgb(74, 141, 181)));
+//                    pieHelperArrayList.add(new PieHelper(percentageOfLeft, Color.BLUE));
 
                     pieView.setDate(pieHelperArrayList);
                     pieView.showPercentLabel(false); //optional

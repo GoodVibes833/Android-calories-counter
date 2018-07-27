@@ -25,38 +25,39 @@
         android:gravity="center">
 
         <view
-            android:layout_width="300dp"
-            android:layout_height="300dp"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
             class="im.dacer.androidcharts.PieView"
             android:id="@+id/pie_view" />
 
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp">
+
         <TextView
-            android:id="@+id/chartBasicCalories_tv"
+            android:layout_gravity="center"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@color/colorPrimaryBlue"/>
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="44dp"
-            android:gravity="center"
-            android:text="eatCal - moveCal" />
+            android:textColor="@color/colorPrimaryBlue"
+            android:text="  How much you can eat more : "/>
 
         <TextView
             android:id="@+id/chartGotCalories_tv"
-            android:text="moveCal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center" />
-
-        <TextView
-            android:id="@+id/chartLostCalories_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/chartGotCalories_tv"
-            android:gravity="center"
-            android:text="LeftCal" />
-
-    </RelativeLayout>
+            android:textColor="@color/colorPrimaryBlue"
+            android:layout_alignParentTop="true"
+            android:gravity="center"/>
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

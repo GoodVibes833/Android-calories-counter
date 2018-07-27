@@ -31,22 +31,29 @@
             android:textSize="@dimen/largeText"
             android:text="item"/>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <TextView
             android:textSize="20sp"
-            android:text="×"
+            android:text="× "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <EditText
-            android:id="@+id/gram"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:hint="@string/calories_per_100g"
-            android:inputType="number" />
+            <EditText
+                android:id="@+id/gram"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:hint="grams"
+                android:inputType="number" />
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
         <TextView
             android:textSize="20sp"
-            android:text="="
+            android:text="= "
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
@@ -56,8 +63,10 @@
             android:layout_height="wrap_content"
             android:textSize="@dimen/largeText"
             android:text="calories"/>
-
     </LinearLayout>
+
+
+</LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
