@@ -91,7 +91,7 @@ public class HistoryController extends AppCompatActivity {
         //adding images
         List<EventDay> events = new ArrayList<>();
         final Calendar calendar = Calendar.getInstance();
-        events.add(new EventDay(calendar, R.drawable.popup_green));
+        events.add(new EventDay(calendar, R.drawable.img_success));
 
         final CalendarView calendarView = dialogView.findViewById(R.id.calendarView);
         calendarView.setEvents(events);
