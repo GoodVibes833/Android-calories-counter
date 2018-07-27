@@ -1,9 +1,8 @@
 # # Calorie counter
 
-- Daily calorie counter
-- Setting target weight
-- input calories that user take and consume
-- monitoring the calories history
+- JAVA, Android, Firebase, libraries
+- Daily calorie counter, Setting target weight
+- input calories that user take and consume, monitoring the calories history
 
 
 
@@ -31,13 +30,13 @@
 
 - Choose one of  foods on the default list
 
-  ![move2](images/move2.png)
+![move2](images/move2.png)
 
 
 
 - You can also add new item : INPUT NEW FOOD
 
-  ![add](images/add.png)
+![add](images/add.png)
 
 
 
@@ -51,4 +50,4 @@
 
 - You can see previous days as well
 
-  ![calendar](images/calendar.png)
+![calendar](images/calendar.png)
